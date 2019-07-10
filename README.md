@@ -20,6 +20,10 @@ Step by step instructions on how to get the app running locally.
 
 3. Run app locally by runinng `yarn start` in the project directory.
 
+## Helpful Scripts
+
+1. To avoid `has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.` problem when running the app on local host open terminal and run ` open -n -a /Applications/Google\ Chrome.app --args --user-data-dir="/tmp/someFolderName" --disable-web-security`. This opens up a new chrome window with securirty settings disabled.
+
 
 
 ## Basic Commands
