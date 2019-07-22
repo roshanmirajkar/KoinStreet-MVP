@@ -1,0 +1,20 @@
+.Container{
+    position: Left;
+    padding: 0 123px;
+
+}
+
+.Links{
+    padding: 0 123px;
+    color: #4A90E2;
+}
+
+.Links a {
+    color: #4A90E2;;
+}
+
+.Navbar {
+    background-color: white;
+    box-shadow: 0 0px 0px rgba(0,0,0, 0.25);
+
+}

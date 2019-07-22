@@ -1,0 +1,19 @@
+
+  div#crypto-container {
+    background:white;
+    width: 70%;
+    margin: 30px auto 4px auto;
+    padding: 1em;
+  }
+  
+  span.left {
+    font-weight: bold;
+  }
+  
+  span.right {
+    float:right;
+  }
+
+  .Crypto {
+    text-align: center;
+  } 

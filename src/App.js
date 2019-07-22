@@ -8,6 +8,8 @@ import SignUp from './components/auth/SignUp'
 import CreatePost from './components/posts/CreatePost'
 import Settings from './components/settings/Settings'
 import Container from './components/terminal/Container'
+import Market from './components/Markets/App'
+import News from './components/News/News'
 
 
 
@@ -23,6 +25,8 @@ class App extends Component {
             <Route path='/signin' component={SignIn} />
             <Route path='/signup' component={SignUp} />
             <Route path='/terminal' component={Container}/>
+            <Route path='/market' component={Market}/>
+            <Route path='/news' component={News}/>
             <Route path='/create' component={CreatePost} />
             <Route path='/settings' component={Settings}/>
 
