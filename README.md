@@ -14,7 +14,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Step by step instructions on how to get the app running locally.
 
-1. Clone repository locally by opening the command line and running `git clone https://github.com/roshanmirajkar/KoinStreet-MVP.git` 
+1. Clone repository locally by opening the command line and running `git clone https://github.com/roshanmirajkar/KoinStreet-MVP.git`
 
 2. Install dependencies by running `npm install` or `yarn install` in the project directory.
 
@@ -37,6 +37,18 @@ Step by step instructions on how to get the app running locally.
 4. `Git push origin [branch name` - sets default branch to push with branch name you specify. Next time running `Git push` will automatically push to branch that was set before.
 
 ## Firebase
+
+Firebase Project Name - `Koinstreet-test`
+
+### WorkFlow
+
+Run app locally using command `firebase serve`, this will serve it locally. Had to remove the `homepage` field settings in package.json so firebase searches for files in root after running `npm run build` which creates a stable production build. Changes `public` points to `build` in `firebase.json`, this enables latest changes to be hosted by running `firebase deploy`.
+
+1. `firebase serve` - runs app locally on port 5000
+
+2. `firebase deploy` - deploys app on firebase server at // url
+
+
 
 
 ## Available Scripts
@@ -63,5 +75,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
-
-
