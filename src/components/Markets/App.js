@@ -14,6 +14,7 @@ class App extends Component {
           </h2>
           <Tickers />
         </div>
+       
       </div>
     )
   }

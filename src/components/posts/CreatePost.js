@@ -1,7 +1,9 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { createPost } from '../../store/actions/postActions'
-import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { createPost } from '../../store/actions/postActions';
+import { Redirect } from 'react-router-dom';
+import { withRouter } from "react-router";
+
 
 class CreatePost extends Component {
   state = {
@@ -55,4 +57,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreatePost)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePost));
