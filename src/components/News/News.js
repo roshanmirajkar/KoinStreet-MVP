@@ -25,11 +25,11 @@ class Hello extends React.Component {
         {this.state.articles && this.state.articles.map((item, index) => {
           return (
             <div >
-              <h3 > {item.title} </h3>
+             <img src={item.imageurl} />
               <ul className="Bottom">
+              <h3 > {item.title} </h3>
                 <a href={item.url}>Read More</a>
                 <p >{item.author}</p>
-
               </ul>
             </div>
           )
@@ -37,21 +37,10 @@ class Hello extends React.Component {
 
       </div>
     );
-    
+
   }
 }
 
 export default Hello;
 
-//               <img src={item.imageurl} /> 
-
-//<img src={item.urlToImage} />   style ={ { backgroundImage: {item.urlToImage} } }
-//                                  style="background-image: url("{{ artist.images[2].url }}")"
-// <p>{item.content}</p>            style ={ { backgroundImage: `url(${item.urlToImage})`} }
-
-
-// <img src={item.urlToImage} /> 
-// style ={ { backgroundImage: `url(${item.urlToImage})`, WebkitFilter: 'blur(10px) saturate(2)'} 
-
-
-// <div style ={ { backgroundImage: `url(${item.urlToImage})`} }>
+  /* add image property */
