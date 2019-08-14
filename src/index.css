@@ -35,3 +35,23 @@ input[type=email]:not(.browser-default):focus:not([readonly]) + label,
 input[type=password]:not(.browser-default):focus:not([readonly]) + label{
   color: #ec407a !important;
 }
+
+.Postbox {
+  left: 30px;
+}
+
+.Login {
+    position: center;
+
+  }
+.Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+/* styling notifications and post notificaions are under the same styling*/
+
+.section{
+  width: 400px;
+  height: 120px;
+}

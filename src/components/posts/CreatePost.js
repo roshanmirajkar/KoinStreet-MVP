@@ -25,7 +25,7 @@ class CreatePost extends Component {
     const { auth } = this.props;
     if (!auth.uid) return <Redirect to='/signin' />
     return (
-      <div className="container">
+      <div className="Postbox">
         <form className="white" onSubmit={this.handleSubmit}>
           <h5 className="grey-text text-darken-3">Create a New Post</h5>
           <div className="input-field">

@@ -17,9 +17,11 @@ class SignIn extends Component {
     e.preventDefault();
     this.props.signIn(this.state)
   }
+
+
   render() {
     const { authError, auth } = this.props;
-    if (auth.uid) return <Redirect to='/' /> 
+    if (auth.uid) return <Redirect to='/' />
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>

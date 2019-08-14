@@ -21,9 +21,9 @@
     </div>
 </body>
 <script>
-    
+
     setInterval(orderBook,1000);
-    
+
     function orderBook(){
         var ourRequest = new XMLHttpRequest();
         ourRequest.open('GET','https://api.binance.com/api/v1/depth?symbol=' + document.getElementById("symbol").value + '&limit=5',true);
@@ -31,19 +31,19 @@
             ourData = JSON.parse(ourRequest.responseText);
             //console.log(ourData);
             var xAsk=[],yAsk=[],xBid=[],yBid=[];
-            
+
             //Collect Data for Asks
             for(i=0;i<5;i++){
                 xAsk.push(parseFloat(ourData["asks"][i][1]));
                 yAsk.push((ourData["asks"][i][0]*1).toString() + '_');
             }
-            
+
             //Collect Data for Bids
             for(i=4;i>=0;i--){
                 xBid.push(parseFloat(ourData["bids"][i][1]));
                 yBid.push((ourData["bids"][i][0]*1).toString() + '_');
             }
-            
+
             //Display Chart for Asks
             var data1 = [{
               type: 'bar',
@@ -54,34 +54,34 @@
               },
               orientation: 'h'
             }];
-            
+
             var layout1 = {
                 title: "Asks"
             }
-            
+
             Plotly.newPlot('chartContainer1', data1,layout1);
-            
+
             //Display Chart for Bids
             var data2 = [{
               type: 'bar',
               x: xBid,
-              y: yBid, 
+              y: yBid,
               marker: {
                   color: 'rgb(3, 119, 73)'
               },
               orientation: 'h'
             }];
-            
+
             var layout2 = {
                 title: "Bids"
             }
-            
+
             Plotly.newPlot('chartContainer2', data2, layout2);
-            
+
         }
         ourRequest.send();
-        
+
     }
-    
+
 </script>
 </html>

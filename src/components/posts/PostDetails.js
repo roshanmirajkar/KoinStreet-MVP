@@ -7,14 +7,14 @@ import moment from 'moment'
 
 const PostDetails = (props) => {
   const { post, auth } = props;
-  if (!auth.uid) return <Redirect to='/signin' /> 
+  if (!auth.uid) return <Redirect to='/signin' />
   if (post) {
     return (
       <div className="container section post-details">
         <div className="card z-depth-0">
           <div className="card-content">
             <span className="card-title">{post.title}</span>
-            <p>{post.content}</p>s
+            <p>{post.content}</p>
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <div>Posted by {post.authorFirstName} {post.authorLastName}</div>

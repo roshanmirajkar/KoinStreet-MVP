@@ -13,12 +13,12 @@ import CreatePost from '../posts/CreatePost';
 class Dashboard extends Component {
   render() {
     const { posts, auth, notifications } = this.props;
-    if (!auth.uid) return <Redirect to='/signin' /> 
+    if (!auth.uid) return <Redirect to='/signin' />
 
     return (
       <div className="dashboard container">
         <div className="row">
-          <div className="cl">
+          <div className="col s12 m6">
             <CreatePost />
             <PostList posts={posts} />
           </div>
@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'posts', orderBy: ['createdAt', 'desc']}, 
+    { collection: 'posts', orderBy: ['createdAt', 'desc']},
     { collection: 'notification', limit: 5, orderBy: ['time', 'desc']}
   ])
 )(Dashboard)
