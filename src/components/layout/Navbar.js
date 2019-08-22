@@ -14,12 +14,19 @@ const Navbar = (props) => {
   return (
     <nav className="nav-wrapper blue darken-3">
       <div className="container">
-        <Link to='/' className="brand-logo">KOINSTREET</Link>
-        {links}
+      <div className= "logo">
+        <Link to='/' className="brand-logo">KoinStreet</Link>
+        </div>
+    
+        <div  >
+          {links}
+        </div>
+  
       </div>
     </nav>
   )
 }
+
 
 const mapStateToProps = (state) => {
   // console.log(state);

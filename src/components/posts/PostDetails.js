@@ -5,12 +5,13 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import moment from 'moment'
 
+
 const PostDetails = (props) => {
   const { post, auth } = props;
   if (!auth.uid) return <Redirect to='/signin' />
   if (post) {
     return (
-      <div className="container section post-details">
+      <div className="container">
         <div className="card z-depth-0">
           <div className="card-content">
             <span className="card-title">{post.title}</span>

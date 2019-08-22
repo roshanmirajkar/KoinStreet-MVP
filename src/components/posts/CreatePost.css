@@ -1,0 +1,19 @@
+.white  {
+    display: flex;
+    width: 90%;
+    height: 100%;
+    margin: 20px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 10px 10px rgba(0,0,0, 0.25);
+    display: inline-block;
+    /* grid-template-rows: 1fr 1fr; */
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+
+.white:hover  {
+    transform: scale(1.01, 1.01);
+    box-shadow: 0 30px 60px rgba(0,0,0, 0.5);
+}

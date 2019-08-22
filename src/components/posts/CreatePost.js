@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createPost } from '../../store/actions/postActions';
 import { Redirect } from 'react-router-dom';
 import { withRouter } from "react-router";
+import './CreatePost.css';
 
 
 class CreatePost extends Component {

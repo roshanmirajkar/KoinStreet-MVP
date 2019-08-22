@@ -65,3 +65,14 @@
     flex-direction: column;
     text-align: center;
 }
+
+
+
+@media (max-width: 555px) {
+ 
+    .Card {
+        align-content: center;
+        margin-left: 0px;
+    
+    }
+}
