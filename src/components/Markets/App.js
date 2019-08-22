@@ -4,6 +4,8 @@ import Tickers from './Components/Ticker'
 //import axios from 'axios';
 //var NumberFormat = require('react-number-format');
 
+import CryptoTable from './Components/table';
+
 class App extends Component {
   render() {
     return (
@@ -12,7 +14,9 @@ class App extends Component {
           <h2>
             Cryptocurrency Markets
           </h2>
+          <CryptoTable />
           <Tickers />
+          
         </div>
        
       </div>

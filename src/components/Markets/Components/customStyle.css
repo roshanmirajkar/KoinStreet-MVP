@@ -1,0 +1,41 @@
+.top {
+    height: 50px;
+    width: 110%;
+    background-image: linear-gradient(to right, #4a90e2 , #534eac);
+    color: whitesmoke;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+.add_padding {
+    padding-top: 10px;
+}
+.main {
+    width: 25%;
+    margin-left: 125px;
+
+}
+.add_margin {
+    margin-left: 10px;
+    padding-left: 90px;
+}
+
+.MuiGrid-grid-xs-2 {
+    padding: 5px;
+} 
+@media screen and (max-width: 650px) {
+    .MuiTypography-root {
+      padding: 0;
+    }
+    .MuiGrid-grid-xs-2 {
+        max-width: 0 !important;
+    }
+    .add_padding {
+        font-size: 10px;
+    }
+  }
+.move_center {
+    margin-left: 40%;
+    margin-top: 10%;
+    text-align: left;
+
+}
