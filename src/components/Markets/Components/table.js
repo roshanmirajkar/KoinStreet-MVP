@@ -40,7 +40,7 @@ class CryptoTable extends React.Component {
         const TableData = ({ data }) => (
             <>
                 {data.map((data) => (
-                    <Grid container spacing={1}>
+                    <Grid className="Grid" container spacing={1}>
                         <Grid align="left" item xs={10}>
                             <Typography>{data.name}</Typography>
                         </Grid>

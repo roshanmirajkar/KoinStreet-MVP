@@ -6,11 +6,11 @@
 
 .Links{
     padding: 0 123px;
-    color: #4A90E2;
+    color: black;
 }
 
-.Links a {
-    color: #4A90E2;;
+.logo {
+    color: black;
 }
 
 .Navbar {
@@ -31,6 +31,10 @@
 @media (max-width: 993px) {
  
     .logo {
-        margin-right: 50%;
+        margin-left: 0%;
+    }
+
+    .logo  {
+        display:none;
     }
 }

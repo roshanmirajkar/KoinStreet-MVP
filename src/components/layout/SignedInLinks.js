@@ -6,7 +6,7 @@ import './SignedInLinks.css';
 
 const SignedInLinks = (props) => {
   return (
-    <div>
+    <div >
       <ul className="right">
         <li><NavLink to='/market'>Markets</NavLink></li>
         <li><NavLink to='/news'>News</NavLink></li>

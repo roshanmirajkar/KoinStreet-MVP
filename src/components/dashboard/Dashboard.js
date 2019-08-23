@@ -6,7 +6,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import CreatePost from '../posts/CreatePost';
-import Hello from '../News/News';
+//import Hello from '../News/News';
 
 
 
