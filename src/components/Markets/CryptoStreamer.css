@@ -1,0 +1,15 @@
+.up {
+  color: #42f492;
+}
+
+.down {
+  color: red;
+}
+
+.unchanged {
+ color: orange;
+}
+
+.exchange {
+  color: #42f492;
+}

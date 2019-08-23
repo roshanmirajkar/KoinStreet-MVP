@@ -5,15 +5,33 @@
     margin: 30px auto 4px auto;
     padding: 1em;
   }
-  
+
   span.left {
     font-weight: bold;
   }
-  
+
   span.right {
     float:right;
   }
 
   .Crypto {
     text-align: center;
-  } 
+  }
+
+
+
+  .up {
+    color: green;
+  }
+
+  .down {
+    color: red;
+  }
+
+  .unchanged {
+   color: orange;
+  }
+
+  .exchange {
+    color: #42f492;
+  }

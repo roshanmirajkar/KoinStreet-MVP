@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import Tickers from './Components/Ticker'
+import Iframe from 'react-iframe'
+import CryptoStreamer from './CryptoStreamer'
+
+import CryptoStreamers from './CryptoStreamer.css'
 //import axios from 'axios';
 //var NumberFormat = require('react-number-format');
 
@@ -14,11 +18,13 @@ class App extends Component {
           <h2>
             Cryptocurrency Markets
           </h2>
-          <CryptoTable />
-          <Tickers />
-          
+
+          <div className="App">
+                    <header className="App-header">
+                    </header>
+                    <CryptoStreamer />
+                  </div>
         </div>
-       
       </div>
     )
   }
@@ -105,8 +111,8 @@ class App extends Component {
     );
   }
 }
- 
 
-export default App; 
+
+export default App;
 
 */

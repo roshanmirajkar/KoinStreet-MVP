@@ -28,6 +28,9 @@ class App extends Component {
             <Route path='/create' component={CreatePost} />
             <Route path='/settings' component={Settings}/>
 
+
+
+
           </Switch>
         </div>
       </BrowserRouter>
