@@ -120,8 +120,9 @@ export default class CryptoStreamer extends React.Component {
       return '$ ' + Number(n).toLocaleString('en');
     }
 
-    render() {
+    render()  {
       return (
+
         <div className='col-md-offset-1 col-md-10'>
           <button type='button' onClick={ this.handleStartStream } className='btn btn-success'>Start Stream</button>
           <button type='button' onClick={ this.handleStopStream } className='btn btn-danger'>Stop Stream</button>
