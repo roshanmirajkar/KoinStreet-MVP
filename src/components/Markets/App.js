@@ -5,6 +5,7 @@ import Iframe from 'react-iframe'
 import CryptoStreamer from './CryptoStreamer'
 
 
+
 import CryptoStreamers from './CryptoStreamer.css'
 //import axios from 'axios';
 //var NumberFormat = require('react-number-format');
@@ -17,6 +18,7 @@ class App extends Component {
         <div className="App-header">
           <h2>
             Cryptocurrency Markets
+            
           </h2>
 
           <div className="App">
