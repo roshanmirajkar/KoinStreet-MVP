@@ -21,36 +21,22 @@ export default class CryptoStreamer extends React.Component {
           '5~CCCAGG~ETH~USD',
           '5~CCCAGG~XRP~USD',
           '5~CCCAGG~BCH~USD',
-          '5~CCCAGG~LTC~USD',
-          '5~CCCAGG~BNB~USD',
-          '5~CCCAGG~USDT~USD',
-          '5~CCCAGG~EOS~USD',
-          '5~CCCAGG~XLM~USD',
           '5~CCCAGG~ADA~USD',
-          '5~CCCAGG~TRX~USD',
-          '5~CCCAGG~DASH~USD',
-          '5~CCCAGG~ETC~USD',
-          '5~CCCAGG~LINK~USD',
-          '5~CCCAGG~XTZ~USD',
-          '5~CCCAGG~MIOTA~USD',
+          '5~CCCAGG~XLM~USD',
+          '5~CCCAGG~LTC~USD',
           '5~CCCAGG~NEO~USD',
-          '5~CCCAGG~ATOM~USD',
+          '5~CCCAGG~EOS~USD',
           '5~CCCAGG~XEM~USD',
-          '5~CCCAGG~MKR~USD',
-          '5~CCCAGG~USDC~USD',
-          '5~CCCAGG~ONT~USD',
-          '5~CCCAGG~ZEC~USD',
-          '5~CCCAGG~VSYS~USD',
-          '5~CCCAGG~DOGE~USD',
-          '5~CCCAGG~DCR~USD',
-          '5~CCCAGG~BAT~USD',
-          '5~CCCAGG~VET~USD',
-          '5~CCCAGG~QTUM~USD',
-          
-
-
+          '5~CCCAGG~IOT~USD',
+          '5~CCCAGG~DASH~USD',
+          '5~CCCAGG~XMR~USD',
+          '5~CCCAGG~TRX~USD',
+          '5~CCCAGG~VEN~USD',
+          '5~CCCAGG~BTG~USD',
+          '5~CCCAGG~QTUM~USD'
         ]
       };
+      //handleStartStream()
     }
 
     dataUnpack = (data) => {
@@ -93,18 +79,22 @@ export default class CryptoStreamer extends React.Component {
       this.setState({ cryptos: this.state.cryptos });
     }
 
-    handleStartStream = () => {
-      socket.emit('SubAdd', { subs: this.state.subscription });
-      const that = this;
-      socket.on('m', (message) => {
-        const messageType = message.substring(0, message.indexOf('~'));
-        let res = {};
-        if (messageType === CCC.STATIC.TYPE.CURRENTAGG) {
-          res = CCC.CURRENT.unpack(message);
-          that.dataUnpack(res);
-        }
-      });
+
+componentWillMount() {
+// const  handleStartStream(){
+console.log("I did mount")
+  socket.emit('SubAdd', { subs: this.state.subscription });
+  const that = this;
+  socket.on('m', (message) => {
+    const messageType = message.substring(0, message.indexOf('~'));
+    let res = {};
+    if (messageType === CCC.STATIC.TYPE.CURRENTAGG) {
+      res = CCC.CURRENT.unpack(message);
+      that.dataUnpack(res);
     }
+  });
+//}
+}
 
     handleStopStream = () => {
       socket.emit('SubRemove', { subs: this.state.subscription } );
@@ -135,14 +125,18 @@ export default class CryptoStreamer extends React.Component {
       return '$ ' + Number(n).toLocaleString('en');
     }
 
+
+
+
     render()  {
+
+      console.log("I did Render")
+
       return (
+        <div className='col-md-offset-1 col-md-10'>
 
-        <div >
-          <button type='button' onClick={ this.handleStartStream } className='btn btn-success'>Start Stream</button>
-          <button type='button' onClick={ this.handleStopStream } className='btn btn-danger'>Stop Stream</button>
 
-          <BootstrapTable ref='allTable' data={ this.state.cryptos } search className="blue-text text-darken-2">
+          <BootstrapTable ref='allTable' data={ this.state.cryptos } search>
             <TableHeaderColumn
               dataField='FROMSYMBOL'
               isKey dataSort>Symbol
