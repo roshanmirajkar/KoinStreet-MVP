@@ -4,11 +4,11 @@ import Tickers from './Components/Ticker'
 import Iframe from 'react-iframe'
 import CryptoStreamer from './CryptoStreamer'
 
+
 import CryptoStreamers from './CryptoStreamer.css'
 //import axios from 'axios';
 //var NumberFormat = require('react-number-format');
 
-import CryptoTable from './Components/table';
 
 class App extends Component {
   render() {
@@ -21,6 +21,7 @@ class App extends Component {
 
           <div className="App">
                     <header className="App-header">
+                    
                     </header>
                     <CryptoStreamer />
                   </div>
