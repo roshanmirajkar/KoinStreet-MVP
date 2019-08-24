@@ -20,9 +20,7 @@ class App extends Component {
           </h2>
 
           <div className="App">
-                    <header className="App-header">
-                    
-                    </header>
+                   
                     <CryptoStreamer />
                   </div>
         </div>
