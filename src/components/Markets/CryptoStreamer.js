@@ -1,6 +1,6 @@
 import React from 'react';
 import './react-bootstrap-table-all.min.css'
-import './CryptoStreamer.css'
+import './App.css'
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import CCC from './ccc-streamer-utilities';
 
