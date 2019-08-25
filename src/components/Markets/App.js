@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import CryptoStreamer from './CryptoStreamer'
 import CryptoStreamers from './CryptoStreamer.css'
-//import axios from 'axios';
-//var NumberFormat = require('react-number-format');
-
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
 class App extends Component {
   render() {
+  const { authError, auth } = this.props;
+      if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="Crypto">
         <div className="App-header">
@@ -27,4 +30,13 @@ class App extends Component {
 
 }
 
-export default App
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth,
+  }
+}
+
+export default compose(
+  connect(mapStateToProps),
+)(App)

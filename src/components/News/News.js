@@ -1,8 +1,12 @@
 import React from 'react';
 import './News.css';
+import { firestoreConnect } from 'react-redux-firebase'
+import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
 
 
-class Hello extends React.Component {
+class News extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +24,9 @@ class Hello extends React.Component {
       });
   }
   render() {
+
+    const { authError, auth } = this.props;
+        if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="Card" >
         {this.state.articles && this.state.articles.map((item, index) => {
@@ -41,6 +48,14 @@ class Hello extends React.Component {
   }
 }
 
-export default Hello;
 
-  /* add image property */
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth,
+  }
+}
+
+export default compose(
+  connect(mapStateToProps),
+)(News)
