@@ -16,9 +16,13 @@ Step by step instructions on how to get the app running locally.
 
 1. Clone repository locally by opening the command line and running `git clone https://github.com/roshanmirajkar/KoinStreet-MVP.git`
 
-2. Install dependencies by running `npm install` or `yarn install` in the project directory.
+2. Install dependencies by running `npm install` in the project directory.
 
-3. Run app locally by runinng `yarn start` in the project directory.
+3. Run app locally by runinng `npm start` in the project directory.
+
+4. Compile production version of app by running `npm run build` in the project directory. From here you can also serve a static server.
+
+5. After running `npm run build` Run `firebase deploy' to host it on the firebae url
 
 ## Helpful Scripts
 
@@ -48,9 +52,6 @@ Run app locally using command `firebase serve`, this will serve it locally. Had 
 
 2. `firebase deploy` - deploys app on firebase server at // url
 
-
-
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -75,3 +76,17 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
+
+## PULL DATA
+
+## 1. Run `git status` to check tracked/untracked files and branch status
+
+## 1.5 If you see untracked files, add them to the commit by running `git add -A` to add tracked files and run`git add .`to add both tracked and untracked files. 
+
+## 2. Run `git commit -m "<message name>"` to write a commit message after adding files.
+
+## 3. If you want to discard all changes that you did on a particular file, run `git checkout <filename>`. This will basically update that particulat file to go back to the version that exists on the most recent push to the branch you're using.
+
+## 4. Run `git pull` to update most up to date version of code. If you have more updated code and try to run `git push`and you get a message saying you are ahead of the branch, running `git pull` can sometiems help resolve changes to what is the most accurate version of the file. Then running `git push` to resolve merge changes and publish changes
+
+## 5. While running `git push` if you get a message saying that you are unable to push because you don't have updated code then run `git stash --include-untracked` this will stash and save all your current untracked and tracked files. Then you can run `git pull` o recieve the most updated version of the code. Then you can run `git stash apply` to apply your original changes.
