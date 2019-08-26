@@ -58,7 +58,7 @@
     text-align: center;
     color: #00FCCF;
     font-weight: bold;
-    
+
 }
 
 .Bottom{
@@ -69,10 +69,10 @@
 
 
 @media (max-width: 555px) {
- 
+
     .Card {
         align-content: center;
-        margin-left: 0px;
-    
+        margin-left: 18px;
+
     }
 }
