@@ -133,7 +133,7 @@ console.log("I did mount")
       console.log("I did Render")
 
       return (
-        <div className='Table'>
+        <div className='col-md-offset-1 col-md-10'>
 
 
           <BootstrapTable ref='allTable' data={ this.state.cryptos } search>
