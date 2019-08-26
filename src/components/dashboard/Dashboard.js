@@ -15,7 +15,7 @@ class Dashboard extends Component {
       <div className="dashboard container">
         <div className="row">
           <div className="col s12 m6">
-            <CreatePost />ß
+            <CreatePost />
           </div>
         <PostList posts={posts} />
         </div>

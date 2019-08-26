@@ -4,6 +4,7 @@ import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect } from 'react-redux'
 import './Navbar.css';
+import Img from '../Images/Logo.png'
 
 
 const Navbar = (props) => {
@@ -12,10 +13,12 @@ const Navbar = (props) => {
   const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
 
   return (
-    <nav className="nav-wrapper blue darken-3 ">
+    <nav className="nav-wrapper  grey darken-4 ">
       <div className="container">
       <div className= "logo">
-        <Link to='/' className="brand-logo">KoinStreet</Link>
+      
+
+        <Link to='/' className="brand-logo"><img src={Img} height='25px' /></Link>
         </div>
     
         <div  >
