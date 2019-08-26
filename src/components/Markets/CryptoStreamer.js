@@ -74,7 +74,7 @@ export default class CryptoStreamer extends React.Component {
       if (indexOfCrypto === -1) {
         this.state.cryptos.push(currentPrice[pair]);
       } else {
-        this.state.cryptos[indexOfCrypto] = currentPrice[pair];
+        this.set.state.cryptos[indexOfCrypto] = currentPrice[pair];
       }
       this.setState({ cryptos: this.state.cryptos });
     }

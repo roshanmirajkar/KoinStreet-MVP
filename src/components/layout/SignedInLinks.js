@@ -10,6 +10,7 @@ const SignedInLinks = (props) => {
       <ul className="right">
         <li><NavLink to='/news'>News</NavLink></li>
         <li><NavLink to='/market'>Markets</NavLink></li>
+        <li><NavLink to='/portfolio'>Portfolios</NavLink></li>
         <li><a onClick={props.signOut}>Log Out</a></li>
         <li className="profile"><NavLink to='/' className="btn btn-floating blue lighten-1">
           {props.profile.initials}
@@ -19,6 +20,26 @@ const SignedInLinks = (props) => {
     </div>
   )
 }
+
+
+
+
+/*
+
+
+
+{
+  "rules": {
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "to" ]
+    }]
+  }
+}
+
+*/
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return {

@@ -5,11 +5,12 @@ import Dashboard from './components/dashboard/Dashboard'
 import PostDetails from './components/posts/PostDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-import CreatePost from './components/posts/CreatePost'
 import Market from './components/Markets/App'
 import News from './components/News/News'
+import Portfolio from './components/portfolio/App'
+// /
 
-
+//importing coinbase component breaks
 
 class App extends Component {
   render() {
@@ -24,7 +25,7 @@ class App extends Component {
             <Route path='/signup' component={SignUp} />
             <Route path='/market' component={Market}/>
             <Route path='/news' component={News}/>
-            <Route path='/create' component={CreatePost} />
+            <Route path='/portfolio' component={Portfolio}/>
 
           </Switch>
         </div>

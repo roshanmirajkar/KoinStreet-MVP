@@ -1,6 +1,5 @@
 import React from 'react';
 import './News.css';
-import { firestoreConnect } from 'react-redux-firebase'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
@@ -25,7 +24,7 @@ class News extends React.Component {
   }
   render() {
 
-    const { authError, auth } = this.props;
+    const {auth } = this.props;
         if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="Card" >
