@@ -22,19 +22,24 @@ export default class CryptoStreamer extends React.Component {
           '5~CCCAGG~ETH~USD',
           '5~CCCAGG~XRP~USD',
           '5~CCCAGG~BCH~USD',
-          '5~CCCAGG~ADA~USD',
-          '5~CCCAGG~XLM~USD',
           '5~CCCAGG~LTC~USD',
-          '5~CCCAGG~NEO~USD',
+          '5~CCCAGG~USDT~USD',
+          '5~CCCAGG~BNB~USD',
           '5~CCCAGG~EOS~USD',
-          '5~CCCAGG~XEM~USD',
-          '5~CCCAGG~MIOTA~USD',
-          '5~CCCAGG~DASH~USD',
           '5~CCCAGG~XMR~USD',
+          '5~CCCAGG~XLM~USD',
+          '5~CCCAGG~ADA~USD',
+          '5~CCCAGG~LEO~USD',
           '5~CCCAGG~TRX~USD',
-          '5~CCCAGG~VEN~USD',
-          '5~CCCAGG~BTG~USD',
-          '5~CCCAGG~QTUM~USD'
+          '5~CCCAGG~DASH~USD',
+          '5~CCCAGG~ETC~USD',
+          '5~CCCAGG~XTZ~USD',
+          '5~CCCAGG~LINK~USD',
+          '5~CCCAGG~MIOTA~USD',
+          '5~CCCAGG~MKR~USD',
+          '5~CCCAGG~ATOM~USD',
+          '5~CCCAGG~XEM~USD',
+
         ]
       };
         socket.emit('SubAdd', { subs: this.state.subscription });
