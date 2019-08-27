@@ -12,6 +12,7 @@ const socket = io.connect('https://streamer.cryptocompare.com/');
 
 export default class CryptoStreamer extends React.Component {
     constructor(props) {
+
       super(props);
       this.state = {
         currentPrice: {},
@@ -27,7 +28,7 @@ export default class CryptoStreamer extends React.Component {
           '5~CCCAGG~NEO~USD',
           '5~CCCAGG~EOS~USD',
           '5~CCCAGG~XEM~USD',
-          '5~CCCAGG~IOT~USD',
+          '5~CCCAGG~MIOTA~USD',
           '5~CCCAGG~DASH~USD',
           '5~CCCAGG~XMR~USD',
           '5~CCCAGG~TRX~USD',
@@ -36,7 +37,23 @@ export default class CryptoStreamer extends React.Component {
           '5~CCCAGG~QTUM~USD'
         ]
       };
-      //handleStartStream()
+        socket.emit('SubAdd', { subs: this.state.subscription });
+        const that = this;
+        socket.on('m', (message) => {
+          console.log(message)
+          const messageType = message.substring(0, message.indexOf('~'));
+          let res = {};
+          if (messageType === CCC.STATIC.TYPE.CURRENTAGG) {
+            res = CCC.CURRENT.unpack(message);
+            that.dataUnpack(res);
+          }
+        }
+
+
+      );
+
+        console.log("I did load prices")
+
     }
 
     dataUnpack = (data) => {
@@ -80,10 +97,13 @@ export default class CryptoStreamer extends React.Component {
     }
 
 
+
+
 componentWillMount() {
 // const  handleStartStream(){
-console.log("I did mount")
-  socket.emit('SubAdd', { subs: this.state.subscription });
+///stops socket before starting socket
+socket.emit('SubRemove', { subs: this.state.subscription } );
+socket.emit('SubAdd', { subs: this.state.subscription });
   const that = this;
   socket.on('m', (message) => {
     const messageType = message.substring(0, message.indexOf('~'));
@@ -120,22 +140,17 @@ console.log("I did mount")
       }
     }
 
-    handleFormatNumber = (number) => {
-      const n = parseFloat(number).toFixed(2);
-      return '$ ' + Number(n).toLocaleString('en');
-    }
-
-
-
+     handleFormatNumber = (number) => {
+       const n = parseFloat(number).toFixed(2);
+       return '$ ' + Number(n).toLocaleString('en');
+     }
 
     render()  {
 
       console.log("I did Render")
-
       return (
+
         <div className='Table'>
-
-
           <BootstrapTable ref='allTable' data={ this.state.cryptos } search>
             <TableHeaderColumn
               dataField='FROMSYMBOL'
@@ -175,5 +190,7 @@ console.log("I did mount")
           </BootstrapTable>
         </div>
       );
+
     }
+
 }

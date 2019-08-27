@@ -12,19 +12,20 @@ const Navbar = (props) => {
   // console.log(auth);
   const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />;
 
+
   return (
     <nav className="nav-wrapper  grey darken-4 ">
       <div className="container">
       <div className= "logo">
-      
+
 
         <Link to='/' className="brand-logo"><img src={Img} height='25px' /></Link>
         </div>
-    
+
         <div  >
           {links}
         </div>
-  
+
       </div>
     </nav>
   )

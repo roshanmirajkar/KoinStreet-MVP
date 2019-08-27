@@ -6,14 +6,15 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 
 class App extends Component {
-  render() {
+  render()
+  {
   const { auth } = this.props;
       if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="Crypto">
         <div className="App-header">
           <h2>
-            Cryptocurrency Markets
+            Digital Asset Market
           </h2>
           <div className="App">
             <CryptoStreamer />
