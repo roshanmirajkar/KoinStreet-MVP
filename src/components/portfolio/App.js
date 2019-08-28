@@ -56,7 +56,12 @@ class App extends React.Component {
 								{
 									console.log(response);
 									var balance = response.data.data[0].balance.amount;
-									document.getElementById("balance").innerHTML = "Hello "+name+" your balance is "+balance;
+									var walletName = response.data.data[0].name;
+									var currency = response.data.data[0].currency;
+									var usdBalance = response.data.data[0].native_balance.amount;
+									var usdCurrency = response.data.data[0].native_balance.currency;
+
+									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + " balance is "+ balance + " " + currency + " or " + " $ "+ usdBalance + " in " + usdCurrency;
 								}
 							})
 
@@ -75,14 +80,9 @@ class App extends React.Component {
 				<header className="Coinbase-header">
 					<div>
 						<p>Access Token : {this.state.access_token}</p>
-						<p>Token Type : {this.state.token_type}</p>
-						<p>Expire In : {this.state.expires_in}</p>
-						<p>Refresh Token : {this.state.refresh_token}</p>
-						<p>Create At : {this.state.created_at}</p>
 						<span id="balance"></span>
 					</div>
 					<button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet:user:read,wallet:accounts:read')}>Send Request</button>
-
 
 					</header>
 								</div>

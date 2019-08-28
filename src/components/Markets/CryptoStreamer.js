@@ -83,9 +83,7 @@ export default class CryptoStreamer extends React.Component {
         parseInt(currentPrice[pair].LASTTRADEID, 10).toFixed(0);
       }
 
-      currentPrice[pair].CHANGE24HOUR = CCC.convertValueToDisplay(
-          tsym, (currentPrice[pair].PRICE - currentPrice[pair].OPEN24HOUR)
-        );
+
 
       currentPrice[pair].CHANGE24HOURPCT = (
         (currentPrice[pair].PRICE - currentPrice[pair].OPEN24HOUR) /
@@ -168,11 +166,6 @@ socket.emit('SubAdd', { subs: this.state.subscription });
               dataSort>Price
             </TableHeaderColumn>
             <TableHeaderColumn
-              dataField='CHANGE24HOUR'
-              columnClassName={ this.handlePriceChange }
-              dataSort>Change 24h $
-            </TableHeaderColumn>
-            <TableHeaderColumn
               dataField='CHANGE24HOURPCT'
               columnClassName={ this.handlePriceChange }
               dataSort>Change 24h %
@@ -186,11 +179,6 @@ socket.emit('SubAdd', { subs: this.state.subscription });
               dataField='HIGH24HOUR'
               dataFormat={ this.handleFormatNumber }
               dataSort>24h High
-            </TableHeaderColumn>
-            <TableHeaderColumn
-              dataField='LASTMARKET'
-              columnClassName={ 'exchange' }
-              dataSort>Exchange
             </TableHeaderColumn>
           </BootstrapTable>
         </div>

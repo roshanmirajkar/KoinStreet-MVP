@@ -1,25 +1,8 @@
-.up {
-  color: green;
-}
 
-.down {
-  color: red;
-}
 
-.unchanged {
- color: orange;
-}
 
-.exchange {
-  color: #42f492;
-}
-
-.react-bs-table-container {
-  display: flex;
-
-  position: relative;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0, 0.25);
-  display: inline-block;
+@media screen and (max-width: 800px) {
+    #site-header {
+        display: none;
+    }
 }

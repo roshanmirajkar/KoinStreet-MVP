@@ -8,6 +8,7 @@
 
   span.left {
     font-weight: bold;
+    position: center;
   }
 
   span.right {
@@ -17,11 +18,9 @@
   .Crypto {
     text-align: center;
   }
-
-
-
   .up {
     color: green;
+
   }
 
   .down {
@@ -43,5 +42,17 @@
     overflow: hidden;
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0,0,0, 0.25);
-    display: inline-block;
+
+  }
+
+  @media screen and (max-width: 600px) {
+
+    div#crypto-container {
+      background:red;
+      width: 500%;
+    }
+
+      #site-header {
+          display: none;
+      }
   }

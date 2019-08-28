@@ -4,7 +4,7 @@ import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks'
 import { connect } from 'react-redux'
 import './Navbar.css';
-import Img from '../Images/Logo.png'
+import Img from '../Images/LogoWhite.png'
 
 
 const Navbar = (props) => {
@@ -19,7 +19,8 @@ const Navbar = (props) => {
       <div className= "logo">
 
 
-        <Link to='/' className="brand-logo"><img src={Img} height='25px' /></Link>
+        <Link to='/' className="brand-logo"><img src={Img} height='50px'  /></Link>
+
         </div>
 
         <div  >
