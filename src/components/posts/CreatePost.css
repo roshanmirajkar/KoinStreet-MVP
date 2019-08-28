@@ -1,4 +1,4 @@
-.white  {
+.textbox  {
     display: flex;
     width: 90%;
     height: 100%;
@@ -13,7 +13,7 @@
 }
 
 
-.white:hover  {
+.textbox:hover  {
     transform: scale(1.01, 1.01);
     box-shadow: 0 30px 60px rgba(0,0,0, 0.5);
 }

@@ -27,15 +27,15 @@ class CreatePost extends Component {
     if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="Postbox">
-        <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Create a New Post</h5>
+        <form className="textbox blue-grey darken-4" onSubmit={this.handleSubmit}>
+          <h5 className="white-text">Create a New Post</h5>
           <div className="input-field">
-            <input type="text" id='title' onChange={this.handleChange} />
-            <label htmlFor="title">Post Title</label>
+            <input type="text" id='title' onChange={this.handleChange} className="white-text"/>
+            <label htmlFor="title" className="white-text">Post Title</label>
           </div>
           <div className="input-field">
-            <textarea id="content" className="materialize-textarea" onChange={this.handleChange}></textarea>
-            <label htmlFor="content">Post Content</label>
+            <textarea id="content" className="materialize-textarea white-text" onChange={this.handleChange} ></textarea>
+            <label htmlFor="content" className="white-text">Post Content</label>
           </div>
           <div className="input-field">
             <button className="btn blue lighten-1">Create</button>

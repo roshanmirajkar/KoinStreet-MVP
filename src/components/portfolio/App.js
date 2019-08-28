@@ -3,6 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
+import './App.css';
 
 //this fucks up styling
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -79,10 +80,10 @@ class App extends React.Component {
 			<div className="Coinbase">
 				<header className="Coinbase-header">
 					<div>
-						<p>Access Token : {this.state.access_token}</p>
+						<p>Coinbase {this.state.access_token}</p>
 						<span id="balance"></span>
 					</div>
-					<button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet:user:read,wallet:accounts:read')}>Send Request</button>
+					<button className="btn" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet:user:read,wallet:accounts:read')}>Connect to Coinbase</button>
 
 					</header>
 								</div>
