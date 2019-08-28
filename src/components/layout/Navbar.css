@@ -1,35 +1,33 @@
-.Container{
-    
-    padding: 0 123px;
-   
-   
-
-}
-
-
-.logo {
-    color: black;
-    
-    
-}
-
-
-
-.Navbar {
-    background-color: white;
-    box-shadow: 0 0px 0px rgba(0,0,0, 0.25);
-
-}
 
 
 @media (max-width: 555px) {
  
-    .logo {
-       display: none;
+    .container{
+        height:200px;
     }
-
+    
+    
+    .nav-wrapper {
+        height:140px;
+    }
+    
+    
+    .logo, .links {
+      position: flex;
+      flex-wrap:wrap;
+      
+    }
+    .logo {
+        height:70px;
+        margin-top:10px;
+    }
+    
+    .links {
+        height:70px;
+    }
+    
 }
-
+/*
 
 @media (max-width: 993px) {
  
@@ -45,3 +43,5 @@
 
    
 }
+
+*/
