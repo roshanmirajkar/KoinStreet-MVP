@@ -38,6 +38,7 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 
 .Postbox {
   left: 30px;
+
 }
 
 .Login {

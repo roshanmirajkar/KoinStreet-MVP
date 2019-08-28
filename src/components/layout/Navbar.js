@@ -23,7 +23,7 @@ const Navbar = (props) => {
 
         </div>
 
-        <div  >
+        <div >
           {links}
         </div>
 

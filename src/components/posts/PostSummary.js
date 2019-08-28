@@ -4,7 +4,7 @@ import './PostSummary.css';
 
 const PostSummary = ({post}) => {
   return (
-    <div className="card blue-grey darken-4">
+    <div className="card blue-grey darken-4" width="100%">
       <div className="card-content white-text">
         <span className="card-title ">{post.title}</span>
         <p>Posted by {post.authorFirstName} {post.authorLastName}</p>

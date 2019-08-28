@@ -1,17 +1,19 @@
 .Container{
-    position: Left;
+    
     padding: 0 123px;
+   
+   
 
 }
 
-.Links{
-    padding: 0 123px;
-    color: black;
-}
 
 .logo {
     color: black;
+    
+    
 }
+
+
 
 .Navbar {
     background-color: white;
@@ -23,8 +25,9 @@
 @media (max-width: 555px) {
  
     .logo {
-        display: none;
+       display: none;
     }
+
 }
 
 
@@ -35,6 +38,10 @@
     }
 
     .logo  {
-        display:none;
+       display: none;
     }
+
+    
+
+   
 }

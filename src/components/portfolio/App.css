@@ -6,13 +6,16 @@
 
 .Coinbase {
   text-align: center;
+  transform: translate(0, 50%)
 }
 .Coinbase-header {
     margin-left: 250px;
     margin-right: auto;
     text-align: center;
+    justify-content: center;
     display: flex;
-    width: 300px;
+    width: 400px;
+    height: 100px;
     padding: 10px;
     margin: 20px;
     position: relative;
@@ -33,6 +36,10 @@
 .btn {
   background-color: white;
   color: #1B4B82;
+}
+
+.btn:hover {
+  color:white;
 }
 
 

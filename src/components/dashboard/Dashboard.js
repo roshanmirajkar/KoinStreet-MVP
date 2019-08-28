@@ -5,6 +5,7 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import CreatePost from '../posts/CreatePost';
+import './Dashboard.css';
 
 class Dashboard extends Component {
   render() {
@@ -12,12 +13,15 @@ class Dashboard extends Component {
     if (!auth.uid) return <Redirect to='/signin' />
 
     return (
-      <div className="dashboard container">
+      <div className="dashboard">
         <div className="row">
-          <div className="col s12 m6">
-            <CreatePost />
+          <div className="column">
+            <CreatePost /> 
           </div>
-        <PostList posts={posts} />
+          <div className="posts">
+          <PostList posts={posts} />
+          </div>
+          
         </div>
       </div>
     )

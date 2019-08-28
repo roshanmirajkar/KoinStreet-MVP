@@ -153,9 +153,9 @@ socket.emit('SubAdd', { subs: this.state.subscription });
       console.log("I did Render")
       return (
 
-        <div className='Table'>
+        <div className='Table' overflow="auto">
           <BootstrapTable ref='allTable' data={ this.state.cryptos } search>
-            <TableHeaderColumn
+            <TableHeaderColumn 
               dataField='FROMSYMBOL'
               isKey dataSort>Symbol
             </TableHeaderColumn>
