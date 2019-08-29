@@ -30,7 +30,10 @@ class App extends React.Component {
 			grant_type = 'authorization_code',
 			client_id = 'e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c',
 			client_secret = '6b53d4d106c59002760dd3084c9c691e135549892b56e54115ea4fb05986a7b7',
-			redirect_uri = 'http://localhost:3000/portfolio';
+			redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
+	//	redirect_uri = 'http://localhost:3000/portfolio';
+
+
 
 
 		if (urlParams.get('code') != null) {
@@ -59,10 +62,10 @@ class App extends React.Component {
 									var balance = response.data.data[0].balance.amount;
 									var walletName = response.data.data[0].name;
 									var currency = response.data.data[0].currency;
-									var usdBalance = response.data.data[0].native_balance.amount;
+						//			var usdBalance = response.data.data[0].native_balance.amount;
 									var usdCurrency = response.data.data[0].native_balance.currency;
 
-									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + " balance is "+ balance + " " + currency + " or " + " $ "+ usdBalance + " in " + usdCurrency;
+									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + " balance is "+ balance + " " + currency + " or " + " $ "+ " in " + usdCurrency;
 								}
 							})
 
@@ -80,10 +83,10 @@ class App extends React.Component {
 			<div className="Coinbase">
 				<header className="Coinbase-header">
 					<div>
-						<p>Coinbase {this.state.access_token}</p>
+						<p>Coinbase : {this.state.access_token}</p>
 						<span id="balance"></span>
 					</div>
-					<button className="btn" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet:user:read,wallet:accounts:read')}>Connect to Coinbase</button>
+        <button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=https%3A%2F%2Fkoinstreet-test.firebaseapp.com%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect to Coinbase</button>
 
 					</header>
 								</div>
@@ -92,6 +95,8 @@ class App extends React.Component {
 
 						}
 					}
+
+						//		<button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio%0D&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Send Request</button>
 
 					const mapStateToProps = (state) => {
 					  // console.log(state);
