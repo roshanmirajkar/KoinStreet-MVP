@@ -14,7 +14,7 @@ const Navbar = (props) => {
 
 
   return (
-    <nav className="nav-wrapper  grey darken-4 " >
+    <nav className="nav-wrapper" >
       <div className="container">
       <div className= "logo">
 

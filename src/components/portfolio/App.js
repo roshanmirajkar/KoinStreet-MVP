@@ -62,10 +62,10 @@ class App extends React.Component {
 									var balance = response.data.data[0].balance.amount;
 									var walletName = response.data.data[0].name;
 									var currency = response.data.data[0].currency;
-						//			var usdBalance = response.data.data[0].native_balance.amount;
+									var usdBalance = response.data.data[0].native_balance.amount;
 									var usdCurrency = response.data.data[0].native_balance.currency;
 
-									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + " balance is "+ balance + " " + currency + " or " + " $ "+ " in " + usdCurrency;
+									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + " balance is "+ balance + " " + currency + " or " + " $ "+ " in " + usdCurrency + usdBalance;
 								}
 							})
 

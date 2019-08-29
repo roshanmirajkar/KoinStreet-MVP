@@ -27,7 +27,7 @@ class CreatePost extends Component {
     if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="Postbox">
-        <form className="textbox blue-grey darken-4" onSubmit={this.handleSubmit}>
+        <form className="textbox" onSubmit={this.handleSubmit}>
           <h5 className="white-text">Create a New Post</h5>
           <div className="input-field">
             <input type="text" id='title' onChange={this.handleChange} className="white-text"/>

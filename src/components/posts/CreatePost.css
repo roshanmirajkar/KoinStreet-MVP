@@ -15,7 +15,7 @@
     display: inline-block;
     /* grid-template-rows: 1fr 1fr; */
     transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    
+    background-color: #1E344D;
     
 }
 
@@ -24,3 +24,5 @@
     transform: scale(1.01, 1.01);
     box-shadow: 0 30px 60px rgba(0,0,0, 0.5);
 }
+
+/* 1f1f1f */
