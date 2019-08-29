@@ -29,7 +29,7 @@ class SignUp extends Component {
           <h5 className="white-text">Sign Up</h5>
           <div className="input-field">
             <label htmlFor="email">Email</label>
-            <input type="email" id='email' onChange={this.handleChange} />
+            <input type="email" id='email' onChange={this.handleChange} className="white-text"/>
           </div>
           <div className="input-field">
             <label htmlFor="password">Password</label>
