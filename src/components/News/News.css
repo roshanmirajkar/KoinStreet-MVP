@@ -1,5 +1,6 @@
 .Card {
     text-align: center;
+    padding: 50px;
 
 }
 
@@ -57,7 +58,7 @@
 
 .Card a{
     text-align: center;
-    color: #00FCCF;
+    color:skyblue;
     font-weight: bold;
 
 }

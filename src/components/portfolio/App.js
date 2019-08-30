@@ -87,10 +87,8 @@ class App extends React.Component {
 						<span id="balance"></span>
 					</div>
         <button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=https%3A%2F%2Fkoinstreet-test.firebaseapp.com%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect to Coinbase</button>
-
 					</header>
 								</div>
-
 							);
 
 						}

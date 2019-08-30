@@ -4,7 +4,6 @@
 
 }
 
-
 @media (max-width: 555px) {
  
     .container{
@@ -23,6 +22,7 @@
       
     }
     .logo {
+        position: left;
         height:70px;
         margin-top:10px;
     }
@@ -32,21 +32,3 @@
     }
     
 }
-/*
-
-@media (max-width: 993px) {
- 
-    .logo {
-        margin-left: 0%;
-    }
-
-    .logo  {
-       display: none;
-    }
-
-    
-
-   
-}
-
-*/

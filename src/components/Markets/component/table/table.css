@@ -1,0 +1,22 @@
+.main-table {
+    text-align: center;
+}
+.table {
+    width: auto;
+    margin: 10px auto;
+    position: center;
+    float: none;
+    max-height: 90vh !important;
+}
+.Marketcard {
+    min-width: 400px;
+    margin: 0 auto;
+    margin-top: -15rem;
+    z-index: 999;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30),
+    0 15px 12px rgba(0, 0, 0, 0.22) !important;
+}
+#coin-image {
+    max-height: 35px;
+    max-width: 35px;
+}
