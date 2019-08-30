@@ -86,25 +86,19 @@ class App extends React.Component {
 						<p>Coinbase : {this.state.access_token}</p>
 						<span id="balance"></span>
 					</div>
-        <button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=https%3A%2F%2Fkoinstreet-test.firebaseapp.com%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect to Coinbase</button>
+        <button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=https%3A%2F%2Fkoinstreet-test.firebaseapp.com%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Coinbase Account</button>
 					</header>
 								</div>
 							);
-
 						}
 					}
-
-						//		<button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio%0D&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Send Request</button>
-
+						//<button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio%0D&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Send Request</button>
 					const mapStateToProps = (state) => {
 					  // console.log(state);
 					  return {
-					    posts: state.firestore.ordered.posts,
 					    auth: state.firebase.auth,
-					    notifications: state.firestore.ordered.notifications
 					  }
 					}
-
 					export default compose(
 					  connect(mapStateToProps),
 					)(App)

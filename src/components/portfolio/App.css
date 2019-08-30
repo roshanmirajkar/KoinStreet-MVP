@@ -15,7 +15,7 @@
     justify-content: center;
     display: flex;
     width: 400px;
-    height: 100px;
+    height: 300px;
     padding: 10px;
     margin: 20px;
     position: relative;
@@ -35,14 +35,13 @@
 
 .btn {
   background-color: white;
+  bottom: 120px;
   color: #1B4B82;
 }
 
 .btn:hover {
   color:white;
 }
-
-
 
 
 .Coinbase-link {

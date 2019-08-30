@@ -4,11 +4,10 @@
 .table {
     width: auto;
     margin: 10px auto;
-    position: center;
     float: none;
     max-height: 90vh !important;
 }
-.Marketcard {
+.marketcard {
     min-width: 400px;
     margin: 0 auto;
     margin-top: -15rem;
@@ -17,6 +16,6 @@
     0 15px 12px rgba(0, 0, 0, 0.22) !important;
 }
 #coin-image {
-    max-height: 35px;
+    max-height: 40px;
     max-width: 35px;
 }

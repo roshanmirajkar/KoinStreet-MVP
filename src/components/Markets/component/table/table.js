@@ -40,7 +40,7 @@ class Table extends Component {
 
     render() {
         return (        
-            <div className="card main-table table-responsive table-hover">
+            <div className="marketcard main-table table-responsive table-hover">
             <div className="header_content">
             <h1>Digital Asset Price Index</h1>
             </div>
