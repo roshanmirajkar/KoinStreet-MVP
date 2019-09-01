@@ -14,12 +14,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div>
-            
-        </div>
-        <Container className="main">
+       
           <Table/>
-        </Container>
+
       </div>
     );
   }
