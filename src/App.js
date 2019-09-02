@@ -5,10 +5,9 @@ import Dashboard from './components/dashboard/Dashboard'
 import PostDetails from './components/posts/PostDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
-import Market from './components/Markets/App'
+import Market from './components/Markets/Market'
 import News from './components/News/News'
 import Portfolio from './components/portfolio/App'
-// /
 
 //importing coinbase component breaks
 

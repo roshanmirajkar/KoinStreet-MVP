@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './table.css';
+import '../../Market.css';
 
 const CRYPTOCOMPARE_API_URI = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=45&tsym=USD';
 const BaseImageUrl = "https://www.cryptocompare.com";
@@ -40,9 +40,9 @@ class Table extends Component {
 
     render() {
         return (        
-            <div className="marketcard main-table table-responsive table-hover">
+            <div className="main-table table-responsive table-hover">
             <div className="header_content">
-            <h1>Digital Asset Price Index</h1>
+            <h1>Price</h1>
             </div>
         
                 <table className="table">
