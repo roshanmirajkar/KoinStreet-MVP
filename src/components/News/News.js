@@ -1,6 +1,5 @@
 import React from 'react';
 import './News.css';
-import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 
@@ -24,8 +23,8 @@ class News extends React.Component {
   }
   render() {
 
-    const {auth } = this.props;
-        if (!auth.uid) return <Redirect to='/signin' />
+   // const {auth } = this.props;
+      //  if (!auth.uid) return <Redirect to='/signin' />
     return (
       <div className="Card" >
         {this.state.articles && this.state.articles.map((item, index) => {
@@ -47,11 +46,10 @@ class News extends React.Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   // console.log(state);
   return {
-    auth: state.firebase.auth,
+ //   auth: state.firebase.auth,
   }
 }
 

@@ -22,7 +22,7 @@ class Table extends Component {
 
         var i = 0;
         while (i < coinsData.data.Data.length) {
-                if (coinsData.data.Data[i].DISPLAY.USD.VOLUME24HOURTO.substring(2,4) <= 0 || coinsData.data.Data[i].DISPLAY.USD.VOLUME24HOURTO.substring(2,3) == 0  ) {
+                if (coinsData.data.Data[i].DISPLAY.USD.VOLUME24HOURTO.substring(2,4) <= 0 || coinsData.data.Data[i].DISPLAY.USD.VOLUME24HOURTO.substring(2,3) === 0  ) {
                    coinsData.data.Data.splice(i,3);
                 }
                 this.setState({
@@ -34,6 +34,7 @@ class Table extends Component {
 
         //load the data in miliseconds, currenctly 4 seconds
       async componentDidMount() {
+          console.log("Marktes componetdivmount")
           await this.loadData();
           setInterval(this.loadData, 4000);
       }
@@ -42,7 +43,7 @@ class Table extends Component {
         return (        
             <div className="main-table table-responsive table-hover">
             <div className="header_content">
-            <h1>Price</h1>
+            <h1>Digital Asset Market Index</h1>
             </div>
         
                 <table className="table">

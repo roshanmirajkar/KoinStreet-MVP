@@ -6,8 +6,6 @@ import { Redirect } from 'react-router-dom'
 import './App.css';
 
 //this fucks up styling
-//import 'bootstrap/dist/css/bootstrap.min.css';
-//import './components/portfolio/App.css';
 
 class App extends React.Component {
 	constructor(props) {
