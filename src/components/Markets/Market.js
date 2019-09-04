@@ -10,8 +10,6 @@ class Market extends Component {
     const {auth} = this.props;
  //   if (!auth.uid) return <Redirect to='/signin' />
     return (
-
-      
       <div >
           <Table/>
       </div>
