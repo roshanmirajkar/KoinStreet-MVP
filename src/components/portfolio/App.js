@@ -32,8 +32,6 @@ class App extends React.Component {
 	//	redirect_uri = 'http://localhost:3000/portfolio';
 
 
-
-
 		if (urlParams.get('code') != null) {
 			const myParam = urlParams.get('code');
 			axios
@@ -63,7 +61,7 @@ class App extends React.Component {
 									var usdBalance = response.data.data[0].native_balance.amount;
 									var usdCurrency = response.data.data[0].native_balance.currency;
 
-									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + " balance is "+ balance + " " + currency + " or " + " $ "+ " in " + usdCurrency + usdBalance;
+									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + " balance is "+ balance + " " + currency + " or " + " $ "+ usdBalance + " in " + usdCurrency;
 								}
 							})
 
@@ -79,12 +77,29 @@ class App extends React.Component {
 		}
 		return (
 			<div className="Coinbase">
+			            <h1>Connect Your Wallet</h1>
+
 				<header className="Coinbase-header">
 					<div>
-						<p>Coinbase : {this.state.access_token}</p>
+						<p>Coinbase: {this.state.access_token}</p>
 						<span id="balance"></span>
 					</div>
-        <button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=https%3A%2F%2Fkoinstreet-test.firebaseapp.com%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Coinbase Account</button>
+        <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=https%3A%2F%2Fkoinstreet-test.firebaseapp.com%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
+					</header>
+
+					<header className="Coinbase-header">
+					<div>
+						<p>Binance: {this.state.access_token}</p>
+						<span id="balance"></span>
+					</div>
+        <button className="Portfolio-button" >Coming Soon</button>
+					</header>
+					<header className="Coinbase-header">
+					<div>
+						<p>Gemeni: {this.state.access_token}</p>
+						<span id="balance"></span>
+					</div>
+        <button className="Portfolio-button" >Coming Soon</button>
 					</header>
 								</div>
 							);

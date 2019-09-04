@@ -10,11 +10,9 @@
         height:200px;
     }
     
-    
     .nav-wrapper {
-        height:140px;
+        height:170px;
     }
-    
     
     .logo, .links {
       position: flex;

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../../Market.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+//import './components/portfolio/App.css';
+
+//uncomment this to get old boostrap version
 
 const CRYPTOCOMPARE_API_URI = 'https://min-api.cryptocompare.com/data/top/mktcapfull?limit=45&tsym=USD';
 const BaseImageUrl = "https://www.cryptocompare.com";
@@ -22,7 +26,7 @@ class Table extends Component {
 
         var i = 0;
         while (i < coinsData.data.Data.length) {
-                if (coinsData.data.Data[i].DISPLAY.USD.VOLUME24HOURTO.substring(2,4) <= 0 || coinsData.data.Data[i].DISPLAY.USD.VOLUME24HOURTO.substring(2,3) === 0  ) {
+                if (coinsData.data.Data[i].DISPLAY.USD.VOLUME24HOURTO.substring(2,4) <= 0 || coinsData.data.Data[i].DISPLAY.USD.VOLUME24HOURTO.substring(2,3) == 0  ) {
                    coinsData.data.Data.splice(i,3);
                 }
                 this.setState({
@@ -36,17 +40,19 @@ class Table extends Component {
       async componentDidMount() {
           console.log("Marktes componetdivmount")
           await this.loadData();
-          setInterval(this.loadData, 4000);
+          setInterval(this.loadData, 1000);
       }
 
     render() {
         return (        
-            <div className="main-table table-responsive table-hover">
-            <div className="header_content">
-            <h1>Digital Asset Market Index</h1>
+            <div className="table-responsive">
+            <div className="market-header">
+           
+                <h1>Digital Asset Index</h1>
             </div>
         
                 <table className="table">
+                
                             <thead>
                                 <tr>
                                 <th scope="col">#</th>

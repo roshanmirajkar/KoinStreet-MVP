@@ -26,7 +26,9 @@ class News extends React.Component {
    // const {auth } = this.props;
       //  if (!auth.uid) return <Redirect to='/signin' />
     return (
+    
       <div className="Card" >
+            <h1>Digital Asset News</h1>
         {this.state.articles && this.state.articles.map((item, index) => {
           return (
             <div >

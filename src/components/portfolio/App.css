@@ -9,7 +9,7 @@
     justify-content: center;
     display: flex;
     width: 300px;
-    height: 300px;
+    height: 200px;
     padding: 10px;
     margin: 20px;
     position: center;
@@ -19,24 +19,23 @@
     display: inline-block;
     /* grid-template-rows: 1fr 1fr; */
     transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-    background-color:  #1552F0;
+    background-color: #1E344D;
+      color: white;
+
 }
 
 .Coinbase-header:hover  {
   transform: scale(1.05, 1.05);
-  box-shadow: 0 30px 60px rgba(0,0,0, 0.5);
 }
 
-.btn {
+.Portfolio-button {
   background-color: white;
-  bottom: 120px;
   color: #1B4B82;
 }
 
 .btn:hover {
   color:white;
 }
-
 
 .Coinbase-link {
  color: #61dafb;
