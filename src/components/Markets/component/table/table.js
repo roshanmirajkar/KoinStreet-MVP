@@ -48,7 +48,7 @@ class Table extends Component {
             <div className="table-responsive">
             <div className="market-header">
            
-                <h1>Digital Asset Index</h1>
+                <h1>Digital Asset Price Index</h1>
             </div>
         
                 <table className="table">

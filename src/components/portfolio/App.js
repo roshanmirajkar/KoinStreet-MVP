@@ -5,8 +5,6 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import './App.css';
 
-//this fucks up styling
-
 class App extends React.Component {
 	constructor(props) {
 		super(props);
@@ -26,8 +24,8 @@ class App extends React.Component {
 		const urlParams = new URLSearchParams(window.location.search);
 		const
 			grant_type = 'authorization_code',
-			client_id = 'e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c',
-			client_secret = '6b53d4d106c59002760dd3084c9c691e135549892b56e54115ea4fb05986a7b7',
+			client_id = '28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440',
+			client_secret = 'cfbf46ca2f7108226c7366a1f364f562482c63569eb014fcda10dcb964593149',
 			redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
 	//	redirect_uri = 'http://localhost:3000/portfolio';
 
@@ -46,7 +44,7 @@ class App extends React.Component {
 					if (res) {
 						axios.get('https://api.coinbase.com/v2/user', { headers: { Authorization: 'Bearer '+res.data.access_token } })
 						.then(response => {
-							console.log(response);
+				//			console.log(response);
 							var name = response.data.data.name;
 
 
@@ -54,7 +52,7 @@ class App extends React.Component {
 							.then(response => {
 								if(response)
 								{
-									console.log(response);
+					//				console.log(response);
 									var balance = response.data.data[0].balance.amount;
 									var walletName = response.data.data[0].name;
 									var currency = response.data.data[0].currency;
@@ -81,22 +79,22 @@ class App extends React.Component {
 
 				<header className="Coinbase-header">
 					<div>
-						<p>Coinbase: {this.state.access_token}</p>
+						<p>Coinbase:</p>
 						<span id="balance"></span>
 					</div>
-        <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=https%3A%2F%2Fkoinstreet-test.firebaseapp.com%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
+        <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&redirect_uri=https%3A%2F%2Fkoinstreet-test.firebaseapp.com%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
 					</header>
 
 					<header className="Coinbase-header">
 					<div>
-						<p>Binance: {this.state.access_token}</p>
+						<p>Binance: </p>
 						<span id="balance"></span>
 					</div>
         <button className="Portfolio-button" >Coming Soon</button>
 					</header>
 					<header className="Coinbase-header">
 					<div>
-						<p>Gemeni: {this.state.access_token}</p>
+						<p>Gemini: </p>
 						<span id="balance"></span>
 					</div>
         <button className="Portfolio-button" >Coming Soon</button>
@@ -105,7 +103,6 @@ class App extends React.Component {
 							);
 						}
 					}
-						//<button className="btn btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=e4ac2eb07157bde62fa7f0b91f69ec20fdb6fa1d852903aa754d763a6a0de22c&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio%0D&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Send Request</button>
 					const mapStateToProps = (state) => {
 					  // console.log(state);
 					  return {
