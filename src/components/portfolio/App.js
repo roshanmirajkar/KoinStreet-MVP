@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import './App.css';
+import Img from '../Images/CryptoAllocation.png';
 
 class App extends React.Component {
 	constructor(props) {
@@ -76,7 +77,7 @@ class App extends React.Component {
 		return (
 			<div className="Coinbase">
 			            <h1>Connect Your Wallet</h1>
-
+			<div className="CryptoCards">
 				<header className="Coinbase-header">
 					<div>
 						<p>Coinbase:</p>
@@ -99,6 +100,13 @@ class App extends React.Component {
 					</div>
         <button className="Portfolio-button" >Coming Soon</button>
 					</header>
+			
+					</div>
+
+				<div className="Allocation">
+					<img src={Img}/>
+					</div>
+
 								</div>
 							);
 						}

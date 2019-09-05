@@ -1,5 +1,36 @@
 /* styles the cards */
 
+.Allocation {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  display: inline-block;
+  /* grid-template-rows: 1fr 1fr; */
+  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background-color: #1E344D;
+  
+}
+
+.Allocation img {
+  width: 600px;
+  height: 400px;
+}
+
+.Allocation:hover  {
+  transform: scale(1.05, 1.05);
+}
+/*
+.CryptoCards {
+  display: flex;
+  -webkit-flex-direction: column; 
+  flex-direction: column; 
+  width: 100%;
+  display:inline-block;
+
+}
+*/
+
 .Coinbase {
   text-align: center;
 }
@@ -49,6 +80,15 @@
    transform: rotate(360deg);
  }
 }
+
+@media (max-width: 555px) {
+
+  .Allocation img {
+    width: 300px;
+    height: 200px;
+  }
+}
+
 
 /* 
 #1B4B82
