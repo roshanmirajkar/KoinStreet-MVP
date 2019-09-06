@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import './Market.css';
-import Table from './component/table/table';
+import Table from './table';
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 
 class Market extends Component {
   render() {
-
     const {auth} = this.props;
  //   if (!auth.uid) return <Redirect to='/signin' />
     return (

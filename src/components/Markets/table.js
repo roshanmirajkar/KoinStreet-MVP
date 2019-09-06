@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../../Market.css';
+import './Market.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 //import './components/portfolio/App.css';
 
@@ -56,8 +56,8 @@ class Table extends Component {
                             <thead>
                                 <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
                                 <th scope="col">Logo</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Symbol</th>
                                 <th scope="col">Price</th>
                                 <th scope="col">Volume(24)</th>

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-import './App.css';
+import './Portfolio.css';
 import Img from '../Images/CryptoAllocation.png';
 
 class App extends React.Component {
@@ -48,7 +48,6 @@ class App extends React.Component {
 				//			console.log(response);
 							var name = response.data.data.name;
 
-
 							axios.get('https://api.coinbase.com/v2/accounts', { headers: { Authorization: 'Bearer '+res.data.access_token } })
 							.then(response => {
 								if(response)
@@ -60,7 +59,8 @@ class App extends React.Component {
 									var usdBalance = response.data.data[0].native_balance.amount;
 									var usdCurrency = response.data.data[0].native_balance.currency;
 
-									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + " balance is "+ balance + " " + currency + " or " + " $ "+ usdBalance + " in " + usdCurrency;
+									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + 
+									" balance is "+ balance + " " + currency + " or $ "+ usdBalance + " in " + usdCurrency;
 								}
 							})
 
@@ -100,11 +100,11 @@ class App extends React.Component {
 					</div>
         <button className="Portfolio-button" >Coming Soon</button>
 					</header>
-			
+		
 					</div>
 
 				<div className="Allocation">
-					<img src={Img}/>
+					<img src={Img} alt = "coin description"/>
 					</div>
 
 								</div>

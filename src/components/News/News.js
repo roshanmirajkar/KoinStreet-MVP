@@ -32,7 +32,7 @@ class News extends React.Component {
         {this.state.articles && this.state.articles.map((item, index) => {
           return (
             <div >
-             <img src={item.imageurl} />
+             <img src={item.imageurl} alt = "article images from crypto compare" />
               <ul className="Bottom">
               <h3 > {item.title} </h3>
                 <a href={item.url}>Read More</a>

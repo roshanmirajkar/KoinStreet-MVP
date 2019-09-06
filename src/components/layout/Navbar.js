@@ -19,7 +19,7 @@ const Navbar = (props) => {
       <div className= "logo">
 
 
-        <Link to='/' className="brand-logo"><img src={Img} height='50px'  /></Link>
+        <Link to='/' className="brand-logo"><img src={Img} alt = "koinstreet logo"height='50px'  /></Link>
 
         </div>
 

@@ -7,7 +7,7 @@ import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import Market from './components/Markets/Market'
 import News from './components/News/News'
-import Portfolio from './components/portfolio/App'
+import Portfolio from './components/portfolio/Portfolio'
 
 //importing coinbase component breaks
 
