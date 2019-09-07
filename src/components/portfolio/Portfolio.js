@@ -5,6 +5,7 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import './Portfolio.css';
 import Img from '../Images/CryptoAllocation.png';
+import Holdings from '../Images/PersonalHoldings.png';
 
 class App extends React.Component {
 	constructor(props) {
@@ -101,13 +102,27 @@ class App extends React.Component {
         <button className="Portfolio-button" >Coming Soon</button>
 					</header>
 		
-					</div>
 
-				<div className="Allocation">
-					<img src={Img} alt = "coin description"/>
-					</div>
+				
 
+
+					</div>
+						
+
+						<div className="RowTwo">
+								<div className="Allocation">
+								<img src={Img} alt = "coin description"/>
 								</div>
+
+						        <div className="Holdings">
+								<img src={Holdings} alt = "holdings description"/>
+								</div>
+						
+						 </div>
+								 
+
+
+					</div>
 							);
 						}
 					}

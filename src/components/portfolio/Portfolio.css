@@ -1,5 +1,10 @@
 /* styles the cards */
 
+.RowTwo{
+  text-align: center;
+  display: flexbox;
+}
+
 .Allocation {
   display: flex;
   position: relative;
@@ -12,6 +17,27 @@
   
 }
 
+.Holdings {
+  width: 320px;
+  height: 360px;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  display: inline-block;
+  /* grid-template-rows: 1fr 1fr; */
+  transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background-color: #1E344D;
+  margin-bottom: 20px;
+}
+
+.Holdings img {
+  width: 320px;
+  height: 360px; 
+}
+
+
+
 .Allocation img {
   width: 600px;
   height: 400px;
@@ -20,6 +46,11 @@
 .Allocation:hover  {
   transform: scale(1.05, 1.05);
 }
+
+.Holdings:hover  {
+  transform: scale(1.05, 1.05);
+}
+
 /*
 .CryptoCards {
   display: flex;
@@ -86,6 +117,36 @@
   .Allocation img {
     width: 300px;
     height: 200px;
+  }
+
+
+
+  .Allocation {
+    width: 300px;
+    height: 200px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    /* grid-template-rows: 1fr 1fr; */
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    background-color: #1E344D;
+    margin-left: 37px;
+  }
+  
+  .Holdings {
+    width: 320px;
+    height: 360px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    /* grid-template-rows: 1fr 1fr; */
+    transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    background-color: #1E344D;
+    margin-bottom: 20px;
+    margin-left: 27px;
+
   }
 }
 
