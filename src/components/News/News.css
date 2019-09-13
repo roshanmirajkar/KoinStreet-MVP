@@ -1,12 +1,13 @@
 .Card {
     text-align: center;
+    background-color: #1E344D;
 }
 
 /* styles the cards */
 .Card div {
     display: flex;
     width: 300px;
-    height: 300px;
+    height: 350px;
     margin: 30px;
     position: relative;
     overflow: hidden;
@@ -17,12 +18,17 @@
     background-color: #1E344D;
 }
 
+.Card h1 {
+    color:white;
+}
+
+
 .Card div:hover  {
     transform: scale(1.1, 1.1);
 }
 
 .Card p {
-    font-size: 13px;
+    font-size: 22px;
     text-align: center;
     color: white;
 }
@@ -32,7 +38,7 @@
     width: 200%;
     object-fit: contain;
     width: 100%;
-    height: 150px;
+    height: 220px;
     object-fit: cover;
     align-self: flex-start;
     opacity: 0.8;
@@ -43,7 +49,7 @@
 .Card h3{
     color: white;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 18px;
     padding: 5px 10px 10px 10px;
     text-align: center;
 }

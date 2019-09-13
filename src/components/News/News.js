@@ -30,15 +30,16 @@ class News extends React.Component {
       <div className="Card" >
             <h1>Digital Asset News</h1>
         {this.state.articles && this.state.articles.map((item, index) => {
+          console.log(item)
           return (
-            <div >
+            <a href ={item.url} > 
+            <div>
              <img src={item.imageurl} alt = "article images from crypto compare" />
               <ul className="Bottom">
               <h3 > {item.title} </h3>
-                <a href={item.url}>Read More</a>
-                <p >{item.author}</p>
               </ul>
             </div>
+            </a>
           )
         })}
 

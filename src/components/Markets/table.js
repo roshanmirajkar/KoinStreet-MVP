@@ -54,7 +54,7 @@ class Table extends Component {
                 <table className="table">
                 
                             <thead>
-                                <tr>
+                                <tr >
                                 <th scope="col">#</th>
                                 <th scope="col">Logo</th>
                                 <th scope="col">Name</th>
@@ -67,6 +67,7 @@ class Table extends Component {
                             <tbody>
                                 {
                                     this.state.coinsData.map((coin, index) => (
+
                                             <tr key={index}>
                                             <td>{index + 1}</td>
                                             <td><img id="coin-image" src={BaseImageUrl + coin.CoinInfo.ImageUrl} alt="logo"></img></td>
