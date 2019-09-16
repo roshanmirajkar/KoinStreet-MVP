@@ -18,6 +18,10 @@
     background-color: #1E344D;
 }
 
+.Card img {
+    border-radius: 20px;
+}
+
 .Card h1 {
     color:white;
 }
