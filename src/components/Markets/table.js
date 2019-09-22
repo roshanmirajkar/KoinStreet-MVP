@@ -20,6 +20,7 @@ class Table extends Component {
         //Get Data from API and set state
       async loadData() {
       const coinsData = await axios.get(CRYPTOCOMPARE_API_URI);
+      console.log(coinsData)
 
         //while loop that checks to see if the coin volume == $0 in the array in the coinsData object. If it is delete it 
         //from array
@@ -35,6 +36,8 @@ class Table extends Component {
             i++;
           }
       }
+
+      
 
         //load the data in miliseconds, currenctly 4 seconds
       async componentDidMount() {

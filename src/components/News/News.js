@@ -18,7 +18,8 @@ class News extends React.Component {
       .then(myJson => {
         this.setState({
           articles: myJson.Data
-        });
+        }
+        );
       });
   }
   render() {

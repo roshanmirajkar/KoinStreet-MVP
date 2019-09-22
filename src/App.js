@@ -8,8 +8,7 @@ import SignUp from './components/auth/SignUp'
 import Market from './components/Markets/Market'
 import News from './components/News/News'
 import Portfolio from './components/portfolio/Portfolio'
-
-//importing coinbase component breaks
+import cryptoNews from './components/cryptoNews/Cnews'
 
 class App extends Component {
   render() {
@@ -25,7 +24,7 @@ class App extends Component {
             <Route path='/market' component={Market}/>
             <Route path='/news' component={News}/>
             <Route path='/portfolio' component={Portfolio}/>
-
+            <Route path='/cryptoNews' component={cryptoNews}/>
           </Switch>
         </div>
       </BrowserRouter>
