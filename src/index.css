@@ -1,4 +1,4 @@
-html{
+html {
   min-height: 100%;
 }
 
@@ -11,48 +11,50 @@ body {
   min-height: 100%;
 }
 
-form{
+form {
   padding: 50px;
   margin-top: 60px;
 }
 
-form button, form h5{
+form button,
+form h5 {
   margin: 20px 50;
 }
 
-input[type=text]:not(.browser-default):focus:not([readonly]),
-input[type=email]:not(.browser-default):focus:not([readonly]),
-input[type=password]:not(.browser-default):focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]){
+input[type="text"]:not(.browser-default):focus:not([readonly]),
+input[type="email"]:not(.browser-default):focus:not([readonly]),
+input[type="password"]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
   border-color: #ec407a;
   box-shadow: none;
 }
 
-input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type="text"]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label,
-input[type=email]:not(.browser-default):focus:not([readonly]) + label,
-input[type=password]:not(.browser-default):focus:not([readonly]) + label{
+input[type="email"]:not(.browser-default):focus:not([readonly]) + label,
+input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
   color: #ec407a !important;
 }
 
 .Postbox {
   left: 30px;
-
 }
 
 .Login {
-    position: center;
-
-  }
+  position: center;
+}
 .Login form {
-    margin: 0 auto;
-    max-width: 320px;
-  }
+  margin: 0 auto;
+  max-width: 320px;
+}
 
 /* styling notifications and post notificaions are under the same styling*/
 
-.section{
+.section {
   width: 400px;
   height: 120px;
 }
 
+.slick-slider {
+  margin: 18px;
+}
