@@ -153,7 +153,7 @@ class TrackerWrapper extends Component {
   render() {
     const { loading, data, orderBy, currency } = this.state;
     return (
-      <div className="loader-wrapper app-h">
+      <div className="loader-wrapper app-h" style={{minHeight: '500px'}}>
         {
           !loading ?
           <Fragment>

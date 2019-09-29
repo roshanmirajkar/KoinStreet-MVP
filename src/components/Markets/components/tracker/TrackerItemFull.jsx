@@ -43,7 +43,7 @@ class TrackerItemFull extends PureComponent {
     const { item, loading } = this.state;
     const { intl: { formatNumber } } = this.props;
     return (
-      <Container className="full-item loader-wrapper py-sm-2">
+      <Container className="full-item loader-wrapper py-sm-2" style={{minHeight: '500px'}}>
         {!loading && item ?
           <Fragment>
             <Helmet
@@ -51,24 +51,24 @@ class TrackerItemFull extends PureComponent {
 
             <Row>
               <Col className="mr-3" xs={12} sm={3}>
-                <img className="mb-3 logo-img md" src={pickSvgUrl(item.symbol)} alt={`Logo ${item.name}`} />
+                <img style={{width: '120px', marginTop: '15px'}} className="mb-3 logo-img md" src={pickSvgUrl(item.symbol)} alt={`Logo ${item.name}`} />
               </Col>
               <Col className="py-2">
-                <h1>{item.name}</h1>
-                <h4>
+                <h1 style={{marginTop: '20px'}}>{item.name}</h1>
+                <h3>
                   <FormattedNumber value={item.supply} />
                   &nbsp;
                   <small>
                     <FormattedMessage id="app.сirculating-btc-supply"
                       defaultMessage="Circulating BTC Supply" />
                   </small>
-                </h4>
+                </h3>
               </Col>
             </Row>
 
             <Row className="mb-5">
               <Col xs={12} sm={4} className="mb-2">
-                <Card>
+                <Card style={{width: '100%'}}>
                   <CardBody>
                     <CardTitle>
                       <FormattedMessage id="app.current-value"
@@ -81,7 +81,7 @@ class TrackerItemFull extends PureComponent {
                 </Card>
               </Col>
               <Col xs={12} sm={4} className="mb-2">
-                <Card>
+                <Card style={{width: '100%'}}>
                   <CardBody>
                     <CardTitle>
                       <FormattedMessage id="app.market-cap"
@@ -94,7 +94,7 @@ class TrackerItemFull extends PureComponent {
                 </Card>
               </Col>
               <Col xs={12} sm={4} className="mb-2">
-                <Card>
+                <Card style={{width: '100%'}}>
                   <CardBody>
                     <CardTitle>
                       <FormattedMessage id="app.24htVoume"
@@ -112,7 +112,7 @@ class TrackerItemFull extends PureComponent {
               <ChartWrapper id={item.id} />
             </ThemeConsumer>
 
-            <div className="text-right item-footer">
+            <div className="text-right item-footer" style={{marginBottom: '30px'}}>
               <Exchange currency={item.symbol.toLowerCase()} type="primary" />
             </div>
 

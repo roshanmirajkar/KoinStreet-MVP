@@ -17,10 +17,17 @@ const getDateDay = () => {
 }
 
 const getDateMonth = () => {
+
+  // Get a date object for the current time
+  // var d = new Date();
+  // Set it to one month ago
+  // d.setMonth(d.getMonth() - 1);
+
   return {
     start: moment().subtract(1, 'months').valueOf(),
+    // start: d.setMonth(d.getMonth() - 1),
     end: moment().valueOf(),
-    interval: 'h1'
+    interval: 'd1'
   }
 }
 

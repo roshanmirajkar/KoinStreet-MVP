@@ -1,6 +1,7 @@
 @import '../../assets/variables.scss';
 @import '../../assets/bootstrap.scss';
-@import '../../../node_modules/react-select/dist/react-select.css';
+@import './../../assets/react-select.css';
+// @import '../../../node_modules/react-select/dist/react-select.css';
 
 .tracker-wrapper {
     padding-top: 80px;

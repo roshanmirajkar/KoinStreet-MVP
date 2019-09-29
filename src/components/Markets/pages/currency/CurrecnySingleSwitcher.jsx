@@ -31,7 +31,7 @@ class CurrencySingleSwitcher extends Component {
     return (
       <Fragment>
         <Switch location={isModal ? this.previousLocation : location}>
-          <Route exact path='/market' component={Home} />
+          <Route exact path='/' component={Home} />
           <Route path={ROUTE_CURRENCY_SINGLE} component={CurrencySingle} />
           <Route path={ROUTE_NOT_FOUND} component={NotFound} />
           <Redirect from='*' exact to={ROUTE_NOT_FOUND} component={NotFound} />

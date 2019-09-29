@@ -35,7 +35,7 @@
     "react-reveal": "^1.2.2",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.1.2",
-    "react-select": "^3.0.4",
+    "react-select": "^1.3.0",
     "react-settings-pane": "^0.1.5",
     "react-slick": "^0.25.2",
     "react-tilt": "^0.1.4",

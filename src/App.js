@@ -12,7 +12,7 @@ import cryptoNews from "./components/cryptoNews/Cnews";
 import Footer from "./components/footer/footer";
 
 import Home from "./components/Markets/pages/home/Home"; // market data list component
-import CurrencySingleModal from './components/Markets/pages/currency/CurrencySingleModal';
+import CurrencySingle from './components/Markets/pages/currency/CurrencySingle';
 // import CurrencySingleSwitcher from './components/Markets/pages/currency/CurrecnySingleSwitcher'; // currency switcher component paths
 
 
@@ -34,8 +34,8 @@ class App extends Component {
             <Route path="/cryptoNews" component={cryptoNews} />
             <Route path="/market" component={Home} />
             {/* <Route component={CurrencySingleSwitcher} /> */}
-            {/* <Route path="/currency/:code" component={CurrencySingle} /> */}
-            <Route path="/currency/:code" component={CurrencySingleModal} />
+            <Route path="/currency/:code" component={CurrencySingle} />
+            {/* <Route path="/currency/:code" component={CurrencySingleModal} /> */}
           </Switch>
           <Footer />
         </div>

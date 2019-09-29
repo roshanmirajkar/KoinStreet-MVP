@@ -1291,19 +1291,20 @@ pre {
     border: 0; }
 
 .form-control {
-  display: block;
-  width: 100%;
-  height: calc(1.5em + 0.5rem + 2px);
-  padding: 0.25rem 0.5rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.15em;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
+  display: block !important;
+  width: 100% !important;
+  height: calc(1.5em + 0.5rem + 2px) !important;
+  padding: 0.1rem 0.5rem !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  color: #495057 !important;
+  background-color: #fff !important;
+  background-clip: padding-box !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 0.15em !important;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+}
   @media (prefers-reduced-motion: reduce) {
     .form-control {
       transition: none; } }
@@ -4009,6 +4010,7 @@ a.close.disabled {
   display: none;
   width: 100%;
   height: 100%;
+  max-height: inherit !important;
   overflow: hidden;
   outline: 0; }
 
@@ -7156,8 +7158,8 @@ a.text-dark:hover, a.text-dark:focus {
   position: relative; }
 
 .tracker-sticky-header {
-  /* position: fixed; */
-  /* top: 53px; */
+  position: fixed;
+  top: 65px;
   background-color: #fff;
   left: 0;
   width: 100%;
@@ -7168,3 +7170,46 @@ a.text-dark:hover, a.text-dark:focus {
     @media (min-width: 576px) {
       .tracker-sticky-header .form-group {
         margin: 0; } }
+
+
+.tracker-wrapper.container .mb-3 > div{
+  padding-bottom: 300px !important;
+}
+
+.footer-r{
+  display: none !important;
+}
+
+.item-badge{
+  display: inline-block;
+  vertical-align: middle !important;
+}
+.item-badge span{
+  color: #fff !important;
+  font-size: 12px !important;
+}
+.item-name{
+  display: inline-block;
+  max-width: 100% !important;
+  vertical-align: middle !important;
+}
+
+.tracker-wrapper.container{
+  padding-top: 165px !important;
+}
+.app-table-col button{
+  padding: 0 5px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  text-transform: none;
+  font-size: 14px;
+}
+.app-table-col span.divider{
+  background: transparent !important;
+}
+
+body.market .nav-wrapper{
+  position: fixed;
+  z-index: 999;
+}
