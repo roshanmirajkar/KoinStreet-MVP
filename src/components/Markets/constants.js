@@ -1,0 +1,10 @@
+export const APP_VERSION = '1.1.2';
+export const API_URL_COINCAP = 'https://api.coincap.io/v2';
+export const API_URL_SOCKET = 'wss://ws.coincap.io';
+export const APP_DIVIDER = '|';
+export const APP_TITLE_PREFFIX = 'LineCoins.info Cryptocurrency Prices, Live Charts, and Market Data';
+export const APP_NAME = 'LineCoins.info';
+export const APP_MAIL = 'support@linecoins.info';
+export const CHANGELLY_REF_ID = '254789b50e35'; //PAST YOUR CHANGELLY REFERAL ID
+export const COINS_LIMIT = 100; // Max size 2000 per request
+export const SYMBOL_EMPTY = '–';

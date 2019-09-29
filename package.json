@@ -21,27 +21,33 @@
     "font-awesome.css": "^4.7.2",
     "fuzzy": "^0.1.3",
     "jquery": "^3.4.1",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.10.1",
+    "react-helmet": "^5.2.1",
     "react-highcharts": "^16.0.2",
     "react-iframe": "^1.8.0",
+    "react-intl": "^2.9.0",
     "react-number-format": "^4.0.8",
     "react-redux": "^5.0.7",
     "react-redux-firebase": "^2.1.6",
     "react-reveal": "^1.2.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "^2.1.0",
+    "react-scripts": "^3.1.2",
     "react-select": "^3.0.4",
     "react-settings-pane": "^0.1.5",
     "react-slick": "^0.25.2",
     "react-tilt": "^0.1.4",
+    "react-transition-group": "^2.9.0",
     "react-use-localstorage": "^3.0.1-alpha.0",
+    "react-virtual-list": "^2.3.0",
     "reactstrap": "^6.5.0",
+    "recharts": "^1.6.2",
     "redux": "^4.0.0",
     "redux-firestore": "^0.5.7",
     "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
     "slick-carousel": "^1.8.1",
     "socket.io": "^2.2.0",
     "styled-components": "^4.3.2"
@@ -51,6 +57,16 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "babel": {
+    "env": {
+      "production": {
+        "plugins": [
+          "transform-react-constant-elements",
+          "transform-react-inline-elements"
+        ]
+      }
+    }
   },
   "browserslist": [
     ">0.2%",

@@ -10,6 +10,13 @@ import thunk from "redux-thunk";
 import { reduxFirestore, getFirestore } from "redux-firestore";
 import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
 import fbConfig from "./config/fbConfig";
+
+// import { BrowserRouter } from 'react-router-dom';
+import { addLocaleData, IntlProvider } from 'react-intl';
+import en from 'react-intl/locale-data/en';
+import { unregister } from './registerServiceWorker';
+
+
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -29,10 +36,15 @@ const store = createStore(
 
 store.firebaseAuthIsReady.then(() => {
   ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
+    <IntlProvider locale="en">
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </IntlProvider>,
     document.getElementById("root")
   );
   registerServiceWorker();
+
+  addLocaleData([...en]);
+  unregister();
 });
