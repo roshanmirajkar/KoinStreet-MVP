@@ -24,12 +24,11 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route exact path="/" component={News} />
+            <Route exact path="/" component={cryptoNews} />
             <Route path="/posts/:id" component={PostDetails} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             {/* <Route path="/market" component={Market} /> */}
-            <Route path="/news" component={News} />
             <Route path="/portfolio" component={Portfolio} />
             <Route path="/cryptoNews" component={cryptoNews} />
             <Route path="/market" component={Home} />
