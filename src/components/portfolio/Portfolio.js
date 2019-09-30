@@ -28,8 +28,8 @@ class App extends React.Component {
 			grant_type = 'authorization_code',
 			client_id = '28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440',
 			client_secret = 'cfbf46ca2f7108226c7366a1f364f562482c63569eb014fcda10dcb964593149',
-			redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
-	//	redirect_uri = 'http://localhost:3000/portfolio';
+			//redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
+	redirect_uri = 'https://localhost:3000/portfolio';
 
 
 		if (urlParams.get('code') != null) {
@@ -84,7 +84,7 @@ class App extends React.Component {
 						<p>Coinbase:</p>
 						<span id="balance"></span>
 					</div>
-        <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&redirect_uri=https%3A%2F%2Fkoinstreet-test.firebaseapp.com%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
+        <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
 					</header>
 
 					<header className="Coinbase-header">
@@ -109,16 +109,7 @@ class App extends React.Component {
 					</div>
 						
 
-						<div className="RowTwo">
-								<div className="Allocation">
-								<img src={Img} alt = "coin description"/>
-								</div>
-
-						        <div className="Holdings">
-								<img src={Holdings} alt = "holdings description"/>
-								</div>
 						
-						 </div>
 								 
 
 
