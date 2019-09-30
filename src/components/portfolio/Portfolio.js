@@ -73,43 +73,29 @@ class App extends React.Component {
 											console.log(this.state.balance)
 											console.log(this.state.walletName)
 											i++;
-											document.getElementById("balance").innerHTML =  newStringResponse.data.data[0].name + '\n' +
-											+ '\n' + newStringResponse.data.data[0].balance.amount + '\n'+ 
-											newStringResponse.data.data[1].name +
-											+ " " + newStringResponse.data.data[1].balance.amount;
-											// newStringResponse.data.data[2].name 
-											// + " " + newStringResponse.data.data[2].balance.amount +
-											// newStringResponse.data.data[3].name 
-											// + " " + newStringResponse.data.data[3].balance.amount +
-											// newStringResponse.data.data[4].name 
-											// + " " + newStringResponse.data.data[4].balance.amount +
-											// newStringResponse.data.data[5].name 
-											// + " " + newStringResponse.data.data[5].balance.amount +
-											// newStringResponse.data.data[6].name 
-											// + " " + newStringResponse.data.data[6].balance.amount +
-											// newStringResponse.data.data[7].name 
-											// + " " + newStringResponse.data.data[7].balance.amount +
-											// newStringResponse.data.data[8].name 
-											// + " " + newStringResponse.data.data[8].balance.amount +
-											// newStringResponse.data.data[9].name 
-											// + " " + newStringResponse.data.data[9].balance.amount +
-											// newStringResponse.data.data[10].name 
-											// + " " + newStringResponse.data.data[10].balance.amount +
-											// newStringResponse.data.data[11].name 
-											// + " " + newStringResponse.data.data[11].balance.amount +
-											// newStringResponse.data.data[12].name 
-											// + " " + newStringResponse.data.data[12].balance.amount +
-											// newStringResponse.data.data[13].name 
-											// + " " + newStringResponse.data.data[13].balance.amount +
-											// newStringResponse.data.data[14].name 
-											// + " " + newStringResponse.data.data[14].balance.amount +
-											// newStringResponse.data.data[15].name 
-											// + " " + newStringResponse.data.data[15].balance.amount +
-											// newStringResponse.data.data[16].name 
-											// + " " + newStringResponse.data.data[16].balance.amount +
-											// newStringResponse.data.data[17].name 
-											// + " " + newStringResponse.data.data[17].balance.amount;
+											document.getElementById("balance").innerHTML = 
+											newStringResponse.data.data[0].name + " " + newStringResponse.data.data[0].balance.amount
+											+ "<br />" + newStringResponse.data.data[1].name + " " + newStringResponse.data.data[1].balance.amount
+											+ "<br />" + newStringResponse.data.data[2].name + " " + newStringResponse.data.data[2].balance.amount
+											+ "<br />" + newStringResponse.data.data[3].name + " " + newStringResponse.data.data[3].balance.amount
+											+ "<br />" + newStringResponse.data.data[4].name + " " + newStringResponse.data.data[4].balance.amount
+											+ "<br />" + newStringResponse.data.data[5].name + " " + newStringResponse.data.data[5].balance.amount
+											+ "<br />" + newStringResponse.data.data[6].name + " " + newStringResponse.data.data[6].balance.amount
+											+ "<br />" + newStringResponse.data.data[7].name + " " + newStringResponse.data.data[7].balance.amount
+											+ "<br />" + newStringResponse.data.data[8].name + " " + newStringResponse.data.data[8].balance.amount
+											+ "<br />" + newStringResponse.data.data[9].name + " " + newStringResponse.data.data[9].balance.amount
+											+ "<br />" + newStringResponse.data.data[10].name + " " + newStringResponse.data.data[10].balance.amount
+											+ "<br />" + newStringResponse.data.data[11].name + " " + newStringResponse.data.data[11].balance.amount
+											+ "<br />" + newStringResponse.data.data[12].name + " " + newStringResponse.data.data[12].balance.amount
+											+ "<br />" + newStringResponse.data.data[13].name + " " + newStringResponse.data.data[13].balance.amount
+											+ "<br />" + newStringResponse.data.data[14].name + " " + newStringResponse.data.data[14].balance.amount
+											+ "<br />" + newStringResponse.data.data[15].name + " " + newStringResponse.data.data[15].balance.amount
+											+ "<br />" + newStringResponse.data.data[16].name + " " + newStringResponse.data.data[16].balance.amount
+											+ "<br />" + newStringResponse.data.data[17].name + " " + newStringResponse.data.data[17].balance.amount;
 
+
+											
+											
 										}
 								}
 							})

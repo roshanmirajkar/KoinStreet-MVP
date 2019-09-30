@@ -64,14 +64,15 @@
 
 .Coinbase {
   text-align: center;
+  
 }
 .Coinbase-header {
     margin-right: auto;
     text-align: center;
     justify-content: center;
     display: flex;
-    width: 300px;
-    height: 200px;
+    width: 400px;
+    height: 500px;
     padding: 10px;
     margin: 20px;
     position: center;
