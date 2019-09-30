@@ -29,7 +29,7 @@ class App extends React.Component {
 			client_id = '28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440',
 			client_secret = 'cfbf46ca2f7108226c7366a1f364f562482c63569eb014fcda10dcb964593149',
 			//redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
-	redirect_uri = 'https://localhost:3000/portfolio';
+			redirect_uri = 'http://localhost:3000/portfolio';
 
 
 		if (urlParams.get('code') != null) {
@@ -52,16 +52,25 @@ class App extends React.Component {
 							axios.get('https://api.coinbase.com/v2/accounts', { headers: { Authorization: 'Bearer '+res.data.access_token } })
 							.then(response => {
 								if(response)
-								{
-					//				console.log(response);
-									var balance = response.data.data[0].balance.amount;
-									var walletName = response.data.data[0].name;
-									var currency = response.data.data[0].currency;
-									var usdBalance = response.data.data[0].native_balance.amount;
-									var usdCurrency = response.data.data[0].native_balance.currency;
-
-									document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + 
-									" balance is "+ balance + " " + currency + " or $ "+ usdBalance + " in " + usdCurrency;
+								{ const stringResponse = JSON.stringify(response)
+									console.log(stringResponse)
+									const newStringResponse = JSON.parse(stringResponse)
+									console.log(newStringResponse)
+						// 
+										var i = 0
+										while (i < newStringResponse.data.data.length  ) {
+									//		console.log(newStringResponse.data.data.length)
+								//			console.log(newStringResponse.data.data[i].balance.amount)
+											var balance = newStringResponse.data.data[i].balance.amount;
+											var walletName = newStringResponse.data.data[i].name;
+									//		console.log(balance)
+											var currency = newStringResponse.data.data[i].currency;
+											this.setState({balance:balance})
+											console.log(this.state.balance)
+											i++;
+										}
+									//document.getElementById("balance").innerHTML = "Hello "+ name +" your " + walletName + 
+									//" balance is "+ balance + " " + currency + " or $ "+ usdBalance + " in " + usdCurrency;
 								}
 							})
 
@@ -84,7 +93,7 @@ class App extends React.Component {
 						<p>Coinbase:</p>
 						<span id="balance"></span>
 					</div>
-        <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&redirect_uri=https%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
+        <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
 					</header>
 
 					<header className="Coinbase-header">
@@ -109,8 +118,7 @@ class App extends React.Component {
 					</div>
 						
 
-						
-								 
+						 
 
 
 					</div>

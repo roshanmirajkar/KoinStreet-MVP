@@ -48,17 +48,3 @@ const CardHorizontal = props => {
 
 export default CardHorizontal;
 
-// const { _id, title, description, url, originalImageUrl } = props.data;
-
-{
-  /* <div className="card">
-        <div className="card-image">
-          <img
-            src={
-              "https://www.ccn.com/wp-content/uploads/2019/09/Man-shock-fear-stock.jpg"
-            }
-          />
-          <span className="card-title">Card Title</span>
-        </div>
-      </div> */
-}
