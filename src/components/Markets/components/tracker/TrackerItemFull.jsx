@@ -55,14 +55,14 @@ class TrackerItemFull extends PureComponent {
               </Col>
               <Col className="py-2">
                 <h1 style={{marginTop: '20px'}}>{item.name}</h1>
-                <h3>
+                {/* <h3>
                   <FormattedNumber value={item.supply} />
                   &nbsp;
                   <small>
                     <FormattedMessage id="app.сirculating-btc-supply"
                       defaultMessage="Circulating BTC Supply" />
                   </small>
-                </h3>
+                </h3> */}
               </Col>
             </Row>
 

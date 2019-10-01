@@ -15,7 +15,7 @@ const SignedInLinks = (props) => {
       <ul className="right">
         <li><NavLink to='/cryptoNews'>News</NavLink></li>
         <li><NavLink to='/market'>Markets</NavLink></li>
-        <li><NavLink to='/portfolio'>Portfolios</NavLink></li>
+        <li><NavLink to='/portfolio'>Portfolio</NavLink></li>
         <li><a onClick={props.signOut}>Log Out</a></li>
       </ul>
     </div>

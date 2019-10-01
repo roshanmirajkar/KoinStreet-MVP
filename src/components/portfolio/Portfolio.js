@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import './Portfolio.css';
-import Img from '../Images/CryptoAllocation.png';
-import Holdings from '../Images/PersonalHoldings.png';
+
 
 class App extends React.Component {
 	constructor(props) {
@@ -31,7 +30,10 @@ class App extends React.Component {
 			client_id = '28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440',
 			client_secret = 'cfbf46ca2f7108226c7366a1f364f562482c63569eb014fcda10dcb964593149',
 			//redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
-			redirect_uri = 'http://localhost:3000/portfolio';
+			
+			redirect_uri = 'https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&account=all&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read';
+
+
 
 
 		if (urlParams.get('code') != null) {
@@ -92,10 +94,6 @@ class App extends React.Component {
 											+ "<br />" + newStringResponse.data.data[15].name + " " + newStringResponse.data.data[15].balance.amount
 											+ "<br />" + newStringResponse.data.data[16].name + " " + newStringResponse.data.data[16].balance.amount
 											+ "<br />" + newStringResponse.data.data[17].name + " " + newStringResponse.data.data[17].balance.amount;
-
-
-											
-											
 										}
 								}
 							})

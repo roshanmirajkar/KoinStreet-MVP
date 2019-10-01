@@ -1,6 +1,11 @@
 .main {
 }
 
+h2 {
+  text-align: left;
+  text-indent: 30px;
+}
+
 .main-table {
   text-align: center;
   color: red;
