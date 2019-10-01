@@ -40,7 +40,8 @@
 /* card styling */
 .custom-card {
   box-sizing: border-box;
-  height: 381px;
+  width: 300px;
+  height: 350px;
   max-width: 380px;
   min-width: 180px;
   margin: auto !important;
@@ -63,7 +64,7 @@
 .card-title-custom {
   display: -webkit-box !important;
   max-width: 100% !important;
-  height: 98px !important;
+  height: 90px !important;
   margin: 0 auto !important;
   font-size: 20px !important;
   line-height: 30px !important;
