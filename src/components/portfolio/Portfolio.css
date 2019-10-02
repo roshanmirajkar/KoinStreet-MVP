@@ -62,9 +62,23 @@
 }
 */
 
-.Coinbase {
-  text-align: center;
+
+.piechart{
+  width: 400px;
+  height:500px;
+  margin: auto;
+  position: relative;
   
+}
+
+.Coinbase {
+  text-align: left;
+  
+}
+
+.h1{
+  text-align: right;
+
 }
 .Coinbase-header {
     margin-right: auto;
@@ -149,7 +163,19 @@
     margin-left: 27px;
 
   }
+
+
+.piecharts{
+  width: 320px;
+  height: 360px;
+  border-radius: 20px;
+
+
+
 }
+}
+
+
 
 
 /* 

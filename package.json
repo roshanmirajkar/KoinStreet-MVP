@@ -37,6 +37,7 @@
     "react-scripts": "^3.1.2",
     "react-select": "^1.3.0",
     "react-settings-pane": "^0.1.5",
+    "react-simple-pie-chart": "^0.5.0",
     "react-slick": "^0.25.2",
     "react-tilt": "^0.1.4",
     "react-transition-group": "^2.9.0",

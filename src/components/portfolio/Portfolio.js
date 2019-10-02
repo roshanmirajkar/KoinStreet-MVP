@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import './Portfolio.css';
+import PieChart from 'react-simple-pie-chart';
+
 
 
 class App extends React.Component {
@@ -19,7 +21,11 @@ class App extends React.Component {
 			balance: [],
 			wallet:[],
 		}
+
+		
 	}
+
+	
 	render() {
 
 		const { auth } = this.props;
@@ -120,32 +126,53 @@ class App extends React.Component {
         <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&account=all&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
 					</header>
 
-					<header className="Coinbase-header">
-					<div>
-						<p>Binance: </p>
-						<span id="balance"></span>
-					</div>
-        <button className="Portfolio-button" >Coming Soon</button>
-					</header>
-					<header className="Coinbase-header">
-					<div>
-						<p>Gemini: </p>
-						<span id="balance"></span>
-					</div>
-        <button className="Portfolio-button" >Coming Soon</button>
-					</header>
-		
+	
+	<div className="piechart">
+					<PieChart
 
-				
-
+					slices={[
+					{
+						color: 'organge',
+						value: 10,
+					},
+					{
+					color: 'red',
+					value: 20,
+					},
+					{
+						color: 'yellow',
+						value: 30,
+						},
+					{
+						color: 'blue',
+						value: 40,
+						},
+						{
+							color: 'white',
+							value: 2,
+						},
+						{
+							color: 'red',
+							value: 0,
+						},
+						
+					]}
+					/>
 
 					</div>
+
+					
+			
+										</div>
+
+
+
 						
 
-						 
-
-
 					</div>
+
+
+
 							);
 						}
 					}
