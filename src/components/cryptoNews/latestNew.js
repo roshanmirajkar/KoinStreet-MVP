@@ -21,7 +21,7 @@ class LatestNews extends Component {
     }
     return (
       <div className="News-Wrapper">
-        <h2>LATEST NEWS</h2>
+        <h2>Customized News</h2>
         {CardList}
       </div>
     );

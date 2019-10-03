@@ -24,6 +24,7 @@
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "react": "^16.4.1",
+    "react-activity-feed": "^0.9.23",
     "react-dom": "^16.10.1",
     "react-helmet": "^5.2.1",
     "react-highcharts": "^16.0.2",

@@ -1,46 +1,39 @@
-import React, { Component } from 'react'
-import PostList from '../posts/PostList'
-import { connect } from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase'
-import { compose } from 'redux'
-import { Redirect } from 'react-router-dom'
-import CreatePost from '../posts/CreatePost';
-import './Dashboard.css';
+import React from 'react';
+import { StreamApp, NotificationDropdown, FlatFeed, LikeButton, Activity, CommentList, CommentField, StatusUpdateForm } from 'react-activity-feed';
+import 'react-activity-feed/dist/index.css';
 
-class Dashboard extends Component {
-  render() {
-    const { posts, auth, /*notifications*/ } = this.props;
-    if (!auth.uid) return <Redirect to='/signin' />
-
+class App extends React.Component {
+  render () {
     return (
-      <div className="dashboard">
-        <div className="row">
-          <div className="column">
-            <CreatePost /> 
-          </div>
-          <div className="posts">
-          <PostList posts={posts} />
-          </div>
-          
-        </div>
-      </div>
-    )
+      <StreamApp
+        apiKey="z4ra3baqpqst"
+        appId="57768"
+        token="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoidXNlci1vbmUifQ.dgmrYT6Icxxb3kHH9NkkmBsczckfxw36zLEIYdDbW60"
+      >
+        <NotificationDropdown notify />
+        <StatusUpdateForm
+          feedGroup="timeline"
+          userId="user-one" />
+        <FlatFeed
+          options={ {reactions: { recent: true } } }
+          notify
+          Activity={(props) =>
+              <Activity {...props}
+                Footer={() => (
+                  <div style={ {padding: '8px 16px'} }>
+                    <LikeButton {...props} />
+                    <CommentField
+                      activity={props.activity}
+                      onAddReaction={props.onAddReaction} />
+                    <CommentList activityId={props.activity.id} />
+                  </div>
+                )}
+              />
+            }
+          />
+      </StreamApp>
+    );
   }
 }
 
-const mapStateToProps = (state) => {
-  // console.log(state);
-  return {
-    posts: state.firestore.ordered.posts,
-    auth: state.firebase.auth,
-    notifications: state.firestore.ordered.notifications
-  }
-}
-
-export default compose(
-  connect(mapStateToProps),
-  firestoreConnect([
-    { collection: 'posts', orderBy: ['createdAt', 'desc']},
-    { collection: 'notification', limit: 5, orderBy: ['time', 'desc']}
-  ])
-)(Dashboard)
+export default App;
