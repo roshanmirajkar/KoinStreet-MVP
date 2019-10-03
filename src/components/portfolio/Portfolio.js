@@ -5,7 +5,6 @@ import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import './Portfolio.css';
 import PieChart from 'react-simple-pie-chart';
-import SimpleTable from './Table';
 
 
 
@@ -22,11 +21,8 @@ class App extends React.Component {
 			balance: [],
 			wallet:[],
 		}
-
-		
 	}
 
-	
 	render() {
 
 		const { auth } = this.props;
@@ -38,7 +34,8 @@ class App extends React.Component {
 			client_secret = 'cfbf46ca2f7108226c7366a1f364f562482c63569eb014fcda10dcb964593149',
 			//redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
 			
-			redirect_uri = 'https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&account=all&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read';
+			redirect_uri = 'http://localhost:3000/portfolio';	
+
 
 
 
@@ -118,7 +115,6 @@ class App extends React.Component {
 		return (
 			<div className="Coinbase">
 			            <h1>Connect Your Wallet</h1>
-						
 			<div className="CryptoCards">
 				<header className="Coinbase-header">
 					<div>
@@ -128,46 +124,50 @@ class App extends React.Component {
         <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&account=all&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
 					</header>
 
-	<div className="piechart">
+	
+	<div className="piechart"
+	
+	>
 					<PieChart
 
 					slices={[
 					{
-						color: '#b68cd8',
+						color: 'organge',
 						value: 10,
 					},
 					{
-					color: '#ffa1ef',
+					color: 'red',
 					value: 20,
 					},
 					{
-						color: '#365b8a',
+						color: 'yellow',
 						value: 30,
 						},
 					{
-						color: '#003f5c',
+						color: 'blue',
 						value: 40,
 						},
 						{
-							color: '#365b8a',
+							color: 'white',
 							value: 2,
 						},
 						{
-							color: '#7275b5',
+							color: 'red',
 							value: 0,
 						},
 						
 					]}
 					/>
 
-				</div>
 					</div>
 
-					<div className="table">
-						<SimpleTable />
+					
+			
+										</div>
 
-						</div>
 
+
+						
 
 					</div>
 
