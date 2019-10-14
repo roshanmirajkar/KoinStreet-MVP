@@ -22,6 +22,11 @@ import {
 } from 'reactstrap';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities'
+import axios from 'axios';
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { Redirect } from 'react-router-dom'
+import './Portfolio.css';
 
 const Widget03 = lazy(() => import('../../views/Widgets/Widget03'));
 
@@ -30,6 +35,7 @@ const brandSuccess = getStyle('--success')
 const brandInfo = getStyle('--info')
 const brandWarning = getStyle('--warning')
 const brandDanger = getStyle('--danger')
+
 
 // Card Chart 1
 const cardChartData1 = {
@@ -452,6 +458,11 @@ const mainChartOpts = {
   },
 };
 
+
+
+/////////////////////////////////////////////
+
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -462,7 +473,15 @@ class Dashboard extends Component {
     this.state = {
       dropdownOpen: false,
       radioSelected: 2,
-    };
+      access_token: '',
+        token_type: '',
+        expires_in: '',
+        refresh_token: '',
+        created_at: '',
+        error: '',
+        balance: [],
+        wallet:[],
+    };    
   }
 
   toggle() {
@@ -480,6 +499,92 @@ class Dashboard extends Component {
   loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
 
   render() {
+
+    const { auth } = this.props;
+		const urlParams = new URLSearchParams(window.location.search);
+		const
+			grant_type = 'authorization_code',
+			client_id = '28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440',
+			client_secret = 'cfbf46ca2f7108226c7366a1f364f562482c63569eb014fcda10dcb964593149',
+			//redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
+			
+      redirect_uri = 'http://localhost:3000/portfolio';
+      
+
+      if (urlParams.get('code') != null) {
+        const myParam = urlParams.get('code');
+        axios
+          .post('https://api.coinbase.com/oauth/token', {
+            "grant_type": `${grant_type}`,
+            "code": `${myParam}`,
+            "client_id": `${client_id}`,
+            "client_secret": `${client_secret}`,
+            "redirect_uri": `${redirect_uri}`
+          })
+          .then(res => {
+            if (res) {
+              axios.get('https://api.coinbase.com/v2/user', { headers: { Authorization: 'Bearer '+res.data.access_token } })
+              .then(response => {
+          //			console.log(response);
+                var name = response.data.data.name;
+  
+                axios.get('https://api.coinbase.com/v2/accounts', { headers: { Authorization: 'Bearer '+res.data.access_token } })
+                .then(response => {
+                  if(response)
+                  { const stringResponse = JSON.stringify(response)
+                    console.log(stringResponse)
+                    const newStringResponse = JSON.parse(stringResponse)
+                    console.log(newStringResponse)
+              // 
+                      var i = 0
+                      while (i < newStringResponse.data.data.length  ) {
+                    //		console.log(newStringResponse.data.data.length)
+                  //			console.log(newStringResponse.data.data[i].balance.amount)
+                        var balance = newStringResponse.data.data[i].balance.amount;
+                        var walletName = newStringResponse.data.data[i].name;
+                        
+                    //		console.log(balance)
+                        var currency = newStringResponse.data.data[i].currency;
+                        this.setState({balance:balance})
+                        this.setState({walletName:walletName})
+                        console.log(this.state.balance)
+                        console.log(this.state.walletName)
+                        i++;
+                        document.getElementById("balance").innerHTML = 
+                        newStringResponse.data.data[0].name + " " + newStringResponse.data.data[0].balance.amount
+                        + "<br />" + newStringResponse.data.data[1].name + " " + newStringResponse.data.data[1].balance.amount
+                        + "<br />" + newStringResponse.data.data[2].name + " " + newStringResponse.data.data[2].balance.amount
+                        + "<br />" + newStringResponse.data.data[3].name + " " + newStringResponse.data.data[3].balance.amount
+                        + "<br />" + newStringResponse.data.data[4].name + " " + newStringResponse.data.data[4].balance.amount
+                        + "<br />" + newStringResponse.data.data[5].name + " " + newStringResponse.data.data[5].balance.amount
+                        + "<br />" + newStringResponse.data.data[6].name + " " + newStringResponse.data.data[6].balance.amount
+                        + "<br />" + newStringResponse.data.data[7].name + " " + newStringResponse.data.data[7].balance.amount
+                        + "<br />" + newStringResponse.data.data[8].name + " " + newStringResponse.data.data[8].balance.amount
+                        + "<br />" + newStringResponse.data.data[9].name + " " + newStringResponse.data.data[9].balance.amount
+                        + "<br />" + newStringResponse.data.data[10].name + " " + newStringResponse.data.data[10].balance.amount
+                        + "<br />" + newStringResponse.data.data[11].name + " " + newStringResponse.data.data[11].balance.amount
+                        + "<br />" + newStringResponse.data.data[12].name + " " + newStringResponse.data.data[12].balance.amount
+                        + "<br />" + newStringResponse.data.data[13].name + " " + newStringResponse.data.data[13].balance.amount
+                        + "<br />" + newStringResponse.data.data[14].name + " " + newStringResponse.data.data[14].balance.amount
+                        + "<br />" + newStringResponse.data.data[15].name + " " + newStringResponse.data.data[15].balance.amount
+                        + "<br />" + newStringResponse.data.data[16].name + " " + newStringResponse.data.data[16].balance.amount
+                        + "<br />" + newStringResponse.data.data[17].name + " " + newStringResponse.data.data[17].balance.amount;
+                      }
+                  }
+                })
+  
+              })
+              window.history.pushState({ page: "another" }, "another page", "example.html");
+  
+            }
+          }).catch(e => {
+            if (e) {
+              console.log(e);
+            }
+          })
+      }
+
+      
 
     return (
       <div className="animated fadeIn">
@@ -500,8 +605,8 @@ class Dashboard extends Component {
                     </DropdownMenu>
                   </ButtonDropdown>
                 </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div className="text-value">$5,000</div>
+                <div> Your Binance Account</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70} />
@@ -524,8 +629,8 @@ class Dashboard extends Component {
                     </DropdownMenu>
                   </Dropdown>
                 </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div className="text-value">$1000</div>
+                <div> Your Gemini Account</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData1} options={cardChartOpts1} height={70} />
@@ -548,8 +653,8 @@ class Dashboard extends Component {
                     </DropdownMenu>
                   </Dropdown>
                 </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div className="text-value">$50</div>
+                <div>Your Kraken Account</div>
               </CardBody>
               <div className="chart-wrapper" style={{ height: '70px' }}>
                 <Line data={cardChartData3} options={cardChartOpts3} height={70} />
@@ -572,8 +677,8 @@ class Dashboard extends Component {
                     </DropdownMenu>
                   </ButtonDropdown>
                 </ButtonGroup>
-                <div className="text-value">9.823</div>
-                <div>Members online</div>
+                <div className="text-value">$100</div>
+                <div>Your Coinbase Pro Account</div>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Bar data={cardChartData4} options={cardChartOpts4} height={70} />
@@ -587,8 +692,10 @@ class Dashboard extends Component {
               <CardBody>
                 <Row>
                   <Col sm="5">
-                    <CardTitle className="mb-0">Your Portfolio</CardTitle>
-                    <div className="small text-muted">October 2019</div>
+
+          <div className="small text-muted">October 2019</div>
+                
+
                   </Col>
                   <Col sm="7" className="d-none d-sm-inline-block">
                     <Button color="primary" className="float-right"><i className="icon-cloud-download"></i></Button>
@@ -638,9 +745,29 @@ class Dashboard extends Component {
           </Col>
         </Row>
 
+        <CardBody className="pb-0">
+                  <div className="pb-0">
+			            <h3>Connect Your Wallet</h3>
+			<div className="CryptoCards" style={{ height: 300 + 'px', marginLeft: 40 + 'px' }} >
+					<div>
+						<p>Coinbase:</p>
+						<span id="balance"></span>
+					</div>
+        <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&account=all&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
+										</div>
+					</div>  
+          </CardBody>
+
 
       </div>
     );
+  }
+}
+
+const mapStateToProps = (state) => {
+  // console.log(state);
+  return {
+    auth: state.firebase.auth,
   }
 }
 
