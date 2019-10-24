@@ -27,7 +27,10 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import './Portfolio.css';
+import firebase from 'firebase'
 
+import { reduxFirestore, getFirestore } from "redux-firestore";
+import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
 const Widget03 = lazy(() => import('../../views/Widgets/Widget03'));
 
 const brandPrimary = getStyle('--primary')
@@ -463,7 +466,7 @@ const mainChartOpts = {
 /////////////////////////////////////////////
 
 
-class Dashboard extends Component {
+class Portfolio extends Component {
   constructor(props) {
     super(props);
 
@@ -476,6 +479,7 @@ class Dashboard extends Component {
       access_token: '',
         token_type: '',
         expires_in: '',
+        access_token: '',
         refresh_token: '',
         created_at: '',
         error: '',
@@ -497,20 +501,42 @@ class Dashboard extends Component {
   }
 
   loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
-
+  
   render() {
+    //print which user is logged in
+    if (firebase.auth().currentUser === null) {
+      console.log('User not signed in');
+    }
+    if (firebase.auth().currentUser != null) {
+      const authRef = firebase.auth();
+      firebase.firestore().collection("users").doc(authRef.currentUser.uid).get()
+                .then(doc => {
+                  if (!doc.exists) {
+                    console.log('No such document!');
+                  } else {
+                    console.log(doc.data().firstName + " is currently logged in" );
+                  }
+                })
+              .catch(err => {
+                console.log('Error getting document', err);
+              });
+    }
 
     const { auth } = this.props;
-		const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search);
 		const
 			grant_type = 'authorization_code',
 			client_id = '28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440',
 			client_secret = 'cfbf46ca2f7108226c7366a1f364f562482c63569eb014fcda10dcb964593149',
 			//redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
-			
       redirect_uri = 'http://localhost:3000/portfolio';
-      
+      const authRef = firebase.auth(); 
+      const db = firebase.firestore();
+      const getDatabaseDocs = db.collection("users").doc(authRef.currentUser.uid)
+      const firestore = getFirestore();
 
+      //exchange temporary code param for valid
+      //access and refresh tokens with POST
       if (urlParams.get('code') != null) {
         const myParam = urlParams.get('code');
         axios
@@ -522,33 +548,76 @@ class Dashboard extends Component {
             "redirect_uri": `${redirect_uri}`
           })
           .then(res => {
+        //    console.log(res)
+            //response contains valid Access & Refresh token
+            //use token to make API call
             if (res) {
-              axios.get('https://api.coinbase.com/v2/user', { headers: { Authorization: 'Bearer '+res.data.access_token } })
+              const accessToken = res.data.access_token
+              const refreshToken = res.data.refresh_token
+              const authRef = firebase.auth();
+              const firestore = getFirestore();
+              var db = firebase.firestore();
+        
+            //Set the data of a document within a collection, 
+            //  explicitly specifying a document identifier.
+            //checks to see if a USER has a doc,
+            //gets the current firebase user and updates their DOC)
+              if (db.collection("users").doc(authRef.currentUser.uid) || (db.collection("users").doc(authRef.currentUser.uid).accessToken =! null) ) {
+                db.collection("users").doc(authRef.currentUser.uid).get()
+                .then(doc => {
+                  if (!doc.exists) {
+                    console.log('No such document!');
+                  } else {
+                    console.log('Document data:', doc.data().firstName);
+                  }
+                })
+              .catch(err => {
+                console.log('Error getting document', err);
+              });
+
+
+
+                db.collection("users").doc(authRef.currentUser.uid).update({
+                //  "accessToken":"Bitcoin",
+                "accessToken":accessToken, 
+               //update current access token and save
+                  "refreshToken":refreshToken,
+                })
+              }
+            
+             
+
+
+            //something that checks to see if a user is logged in
+
+              axios.get('https://api.coinbase.com/v2/user', { headers: { Authorization: 'Bearer '+(accessToken) } })
               .then(response => {
-          //			console.log(response);
+          	//  console.log(res.data.access_token);
                 var name = response.data.data.name;
-  
-                axios.get('https://api.coinbase.com/v2/accounts', { headers: { Authorization: 'Bearer '+res.data.access_token } })
+                //add logic here that makes the request
+                //if the access token is expired, mint a 
+                //new one
+                //make API request with access token to access data
+                axios.get('https://api.coinbase.com/v2/accounts', { headers: { Authorization: 'Bearer '+accessToken } })
                 .then(response => {
                   if(response)
                   { const stringResponse = JSON.stringify(response)
-                    console.log(stringResponse)
+             //       console.log(stringResponse)
                     const newStringResponse = JSON.parse(stringResponse)
-                    console.log(newStringResponse)
-              // 
+              //      console.log(newStringResponse)
+                    //this logs the second Post request response 
                       var i = 0
                       while (i < newStringResponse.data.data.length  ) {
-                    //		console.log(newStringResponse.data.data.length)
-                  //			console.log(newStringResponse.data.data[i].balance.amount)
                         var balance = newStringResponse.data.data[i].balance.amount;
                         var walletName = newStringResponse.data.data[i].name;
-                        
                     //		console.log(balance)
                         var currency = newStringResponse.data.data[i].currency;
                         this.setState({balance:balance})
-                        this.setState({walletName:walletName})
-                        console.log(this.state.balance)
-                        console.log(this.state.walletName)
+                        this.setState({wallet:walletName})
+                  //this.setState({access_token:})
+                        console.log("balance is" + this.state.balance)
+                        console.log("the wallet is "+ this.state.wallet)
+
                         i++;
                         document.getElementById("balance").innerHTML = 
                         newStringResponse.data.data[0].name + " " + newStringResponse.data.data[0].balance.amount
@@ -583,10 +652,68 @@ class Dashboard extends Component {
             }
           })
       }
+      //first try to make a call with a token
+      //this logic should be under componentDidMount
+      else if (urlParams.get('code') == null) {
+          var userToken;
+          getDatabaseDocs.get()
+          .then(doc => {
+            userToken = doc.data().accessToken
+              //get data from database            
+              axios.get('https://api.coinbase.com/v2/user', { headers: { Authorization: 'Bearer '+(userToken) } })
+              .then(response => {
+              //  console.log(res.data.access_token);
+              axios.get('https://api.coinbase.com/v2/accounts', { headers: { Authorization: 'Bearer '+userToken } })
+              .then(response => {
+                if(response)  { 
+                console.log(response)
+                const stringResponse = JSON.stringify(response)
+                const newStringResponse = JSON.parse(stringResponse)
+                console.log(newStringResponse)
+                var i = 0
+                while (i < newStringResponse.data.data.length  ) {
+                  var balance = newStringResponse.data.data[i].balance.amount;
+                  var walletName = newStringResponse.data.data[i].name;
+                //		console.log(balance)
+                  var currency = newStringResponse.data.data[i].currency;
+                  i++;
+                  document.getElementById("balance").innerHTML = 
+                  newStringResponse.data.data[0].name + " " + newStringResponse.data.data[0].balance.amount
+                  + "<br />" + newStringResponse.data.data[1].name + " " + newStringResponse.data.data[1].balance.amount
+                  + "<br />" + newStringResponse.data.data[2].name + " " + newStringResponse.data.data[2].balance.amount
+                  + "<br />" + newStringResponse.data.data[3].name + " " + newStringResponse.data.data[3].balance.amount
+                  + "<br />" + newStringResponse.data.data[4].name + " " + newStringResponse.data.data[4].balance.amount
+                  + "<br />" + newStringResponse.data.data[5].name + " " + newStringResponse.data.data[5].balance.amount
+                  + "<br />" + newStringResponse.data.data[6].name + " " + newStringResponse.data.data[6].balance.amount
+                  + "<br />" + newStringResponse.data.data[7].name + " " + newStringResponse.data.data[7].balance.amount
+                  + "<br />" + newStringResponse.data.data[8].name + " " + newStringResponse.data.data[8].balance.amount
+                  + "<br />" + newStringResponse.data.data[9].name + " " + newStringResponse.data.data[9].balance.amount
+                  + "<br />" + newStringResponse.data.data[10].name + " " + newStringResponse.data.data[10].balance.amount
+                  + "<br />" + newStringResponse.data.data[11].name + " " + newStringResponse.data.data[11].balance.amount
+                  + "<br />" + newStringResponse.data.data[12].name + " " + newStringResponse.data.data[12].balance.amount
+                  + "<br />" + newStringResponse.data.data[13].name + " " + newStringResponse.data.data[13].balance.amount
+                  + "<br />" + newStringResponse.data.data[14].name + " " + newStringResponse.data.data[14].balance.amount
+                  + "<br />" + newStringResponse.data.data[15].name + " " + newStringResponse.data.data[15].balance.amount
+                  + "<br />" + newStringResponse.data.data[16].name + " " + newStringResponse.data.data[16].balance.amount
+                  + "<br />" + newStringResponse.data.data[17].name + " " + newStringResponse.data.data[17].balance.amount;
+                  }
 
-      
+                
+                }
+              })
+              })
 
+              window.history.pushState({ page: "another" }, "another page", "example.html");
+            if (!doc.exists) {
+              console.log('No such document!');
+            } else {
+              console.log(doc.data());
+            }
+          })
+      }
     return (
+
+
       <div className="animated fadeIn">
         <Row>
           <Col xs="12" sm="6" lg="3">
@@ -754,7 +881,7 @@ class Dashboard extends Component {
 						<span id="balance"></span>
 					</div>
         <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&account=all&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
-										</div>
+                    </div>
 					</div>  
           </CardBody>
 
@@ -764,6 +891,9 @@ class Dashboard extends Component {
   }
 }
 
+
+
+
 const mapStateToProps = (state) => {
   // console.log(state);
   return {
@@ -771,4 +901,20 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default Dashboard;
+export default Portfolio;
+
+
+
+
+
+//use the code returned from Coinbase OAuth to set the attribute for the user
+
+//firebase ID token like their email and password, you can add
+//other values this is not what custom claims are for
+//create a new reference to path in database using admin sdk 
+//postusing the user's UID as the key
+
+
+//authenticted users appear in the Firebase database
+
+
