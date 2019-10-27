@@ -503,12 +503,30 @@ class Portfolio extends Component {
   loading = () => <div className="animated fadeIn pt-1 text-center">Loading...</div>
   
   render() {
-    //print which user is logged in
+    const {auth } = this.props;
+    const authRef = firebase.auth(); 
+    const db = firebase.firestore();
+    const firestore = getFirestore();
+    const
+      grant_type = 'authorization_code',
+      refresh_token = 'refresh_token',
+			client_id = '28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440',
+			client_secret = 'cfbf46ca2f7108226c7366a1f364f562482c63569eb014fcda10dcb964593149',
+			//redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
+      redirect_uri = 'http://localhost:3000/portfolio';
+    var currentTimestamp = new Date().getTime()
+    
+    //if not signed in redirect to sign in page
+    if (!auth.uid) return <Redirect to='/signin' />
+
+    //if use is signed out
     if (firebase.auth().currentUser === null) {
       console.log('User not signed in');
     }
+    //if user is signed in
     if (firebase.auth().currentUser != null) {
-      const authRef = firebase.auth();
+      const getDatabaseDocs = db.collection("users").doc(authRef.currentUser.uid)
+
       firebase.firestore().collection("users").doc(authRef.currentUser.uid).get()
                 .then(doc => {
                   if (!doc.exists) {
@@ -520,23 +538,8 @@ class Portfolio extends Component {
               .catch(err => {
                 console.log('Error getting document', err);
               });
-    }
-
-    const { auth } = this.props;
     const urlParams = new URLSearchParams(window.location.search);
-		const
-			grant_type = 'authorization_code',
-			client_id = '28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440',
-			client_secret = 'cfbf46ca2f7108226c7366a1f364f562482c63569eb014fcda10dcb964593149',
-			//redirect_uri = 'https://koinstreet-test.firebaseapp.com/portfolio';
-      redirect_uri = 'http://localhost:3000/portfolio';
-      const authRef = firebase.auth(); 
-      const db = firebase.firestore();
-      const getDatabaseDocs = db.collection("users").doc(authRef.currentUser.uid)
-      const firestore = getFirestore();
-
-      //exchange temporary code param for valid
-      //access and refresh tokens with POST
+      //if the user clicks on OAuth
       if (urlParams.get('code') != null) {
         const myParam = urlParams.get('code');
         axios
@@ -552,11 +555,17 @@ class Portfolio extends Component {
             //response contains valid Access & Refresh token
             //use token to make API call
             if (res) {
+              console.log(res)
               const accessToken = res.data.access_token
               const refreshToken = res.data.refresh_token
+              const tokenExpire = res.data.expires_in
+              const tokenExpiryTime = (currentTimestamp + ( (tokenExpire/60) * 60 * 1000))              
+              console.log()
               const authRef = firebase.auth();
               const firestore = getFirestore();
               var db = firebase.firestore();
+
+              
         
             //Set the data of a document within a collection, 
             //  explicitly specifying a document identifier.
@@ -574,27 +583,19 @@ class Portfolio extends Component {
               .catch(err => {
                 console.log('Error getting document', err);
               });
-
-
-
                 db.collection("users").doc(authRef.currentUser.uid).update({
                 //  "accessToken":"Bitcoin",
                 "accessToken":accessToken, 
                //update current access token and save
                   "refreshToken":refreshToken,
+                  "tokenExpiryTime": tokenExpiryTime,
                 })
               }
-            
-             
-
-
             //something that checks to see if a user is logged in
 
               axios.get('https://api.coinbase.com/v2/user', { headers: { Authorization: 'Bearer '+(accessToken) } })
               .then(response => {
-          	//  console.log(res.data.access_token);
-                var name = response.data.data.name;
-                //add logic here that makes the request
+                      //add logic here that makes the request
                 //if the access token is expired, mint a 
                 //new one
                 //make API request with access token to access data
@@ -654,16 +655,57 @@ class Portfolio extends Component {
       }
       //first try to make a call with a token
       //this logic should be under componentDidMount
+      //refresh token can only be used once, we did get status 200
+       //first try to make a call with a token
+      //this logic should be under componentDidMount
+      //you get a createdAt param that you can use in the logic
+      //the time creation is in UTC so 4hr
       else if (urlParams.get('code') == null) {
-          var userToken;
           getDatabaseDocs.get()
           .then(doc => {
-            userToken = doc.data().accessToken
-              //get data from database            
+            console.log("current time stamp is" + currentTimestamp)
+            if(currentTimestamp > doc.data().tokenExpiryTime){
+              console.log("the expired time is" + doc.data().tokenExpiryTime)
+              //get new Access & refresh token
+              const currentRefreshToken = doc.data().refreshToken
+              //you need another post or get request that gets the data
+              axios.post('https://api.coinbase.com/oauth/token', {
+                          "grant_type": `${refresh_token}`,
+                          "client_id": `${client_id}`,
+                          "client_secret": `${client_secret}`,
+                          "refresh_token": `${currentRefreshToken}`
+                        }).then(res => {
+                          //update new token in database
+                          console.log(res)
+                          const tokenExpiryTime = (currentTimestamp + ( (res.data.expires_in/60) * 60 * 1000))
+                          const accessToken = res.data.access_token
+                          const refreshToken = res.data.refresh_token              
+                          if (db.collection("users").doc(authRef.currentUser.uid) || (db.collection("users").doc(authRef.currentUser.uid).accessToken =! null) ) {
+                            db.collection("users").doc(authRef.currentUser.uid).get()
+                            .then(doc => {
+                              if (!doc.exists) {
+                                console.log('No such document!');
+                              } else {
+                                console.log('Document data:', doc.data().accessToken);
+                              }
+                            })
+                          .catch(err => {
+                            console.log('Error getting document', err);
+                          });
+                            db.collection("users").doc(authRef.currentUser.uid).update({
+                            "accessToken":accessToken, 
+                           //update current access token and save
+                              "refreshToken":refreshToken,
+                              "tokenExpiryTime": tokenExpiryTime,
+                            }).then(console.log("Token update was successfull"))
+                          }
+                        })
+            }
+              const userToken = doc.data().accessToken          
               axios.get('https://api.coinbase.com/v2/user', { headers: { Authorization: 'Bearer '+(userToken) } })
               .then(response => {
               //  console.log(res.data.access_token);
-              axios.get('https://api.coinbase.com/v2/accounts', { headers: { Authorization: 'Bearer '+userToken } })
+              axios.get('https://api.coinbase.com/v2/accounts', { headers: { Authorization: 'Bearer '+ (userToken) } })
               .then(response => {
                 if(response)  { 
                 console.log(response)
@@ -697,10 +739,11 @@ class Portfolio extends Component {
                   + "<br />" + newStringResponse.data.data[16].name + " " + newStringResponse.data.data[16].balance.amount
                   + "<br />" + newStringResponse.data.data[17].name + " " + newStringResponse.data.data[17].balance.amount;
                   }
-
-                
                 }
-              })
+              }).catch(function (error){
+                if (response.status == 401)
+                console.log('It is a 401 error, maybe expired token', error);
+              });
               })
 
               window.history.pushState({ page: "another" }, "another page", "example.html");
@@ -711,9 +754,11 @@ class Portfolio extends Component {
             }
           })
       }
+    }
+
+     
+      //if the user is logged in, then hide the connect CoinBase Button
     return (
-
-
       <div className="animated fadeIn">
         <Row>
           <Col xs="12" sm="6" lg="3">
@@ -892,8 +937,6 @@ class Portfolio extends Component {
 }
 
 
-
-
 const mapStateToProps = (state) => {
   // console.log(state);
   return {
@@ -901,20 +944,19 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default Portfolio;
+export default compose(
+  connect(mapStateToProps),
+)(Portfolio)
 
-
+//
 
 
 
 //use the code returned from Coinbase OAuth to set the attribute for the user
-
 //firebase ID token like their email and password, you can add
 //other values this is not what custom claims are for
 //create a new reference to path in database using admin sdk 
 //postusing the user's UID as the key
-
-
 //authenticted users appear in the Firebase database
 
 
