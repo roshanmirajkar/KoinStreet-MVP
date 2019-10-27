@@ -526,7 +526,6 @@ class Portfolio extends Component {
     //if user is signed in
     if (firebase.auth().currentUser != null) {
       const getDatabaseDocs = db.collection("users").doc(authRef.currentUser.uid)
-
       firebase.firestore().collection("users").doc(authRef.currentUser.uid).get()
                 .then(doc => {
                   if (!doc.exists) {
