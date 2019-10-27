@@ -44,6 +44,16 @@ Step by step instructions on how to get the app running locally.
 
 Firebase Project Name - `Koinstreet-test`
 
+### CoinBase
+
+Intructions about how to work with Coinbase. Coinbase Test email is kcpx@koinstreet.com.
+
+1. When testing the Portfolio OAuth, to test it locally the permitted URI should be http://localhost:3000/portfolio
+
+2. When testing the Portfolio OAuth, to test it on production the permitted URI should be https://koinstreet-test.firebaseapp.com/portfolio
+
+Need to be replaced on redirect URI and on the post params with scope parameter
+
 ### WorkFlow
 
 Run app locally using command `firebase serve`, this will serve it locally. Had to remove the `homepage` field settings in package.json so firebase searches for files in root after running `npm run build` which creates a stable production build. Changes `public` points to `build` in `firebase.json`, this enables latest changes to be hosted by running `firebase deploy`.
