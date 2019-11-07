@@ -538,6 +538,7 @@ class Portfolio extends Component {
                 console.log('Error getting document', err);
               });
     const urlParams = new URLSearchParams(window.location.search);
+
       //if the user clicks on OAuth
       if (urlParams.get('code') != null) {
         const myParam = urlParams.get('code');
@@ -652,6 +653,7 @@ class Portfolio extends Component {
             }
           })
       }
+
       //first try to make a call with a token
       //this logic should be under componentDidMount
       //refresh token can only be used once, we did get status 200
@@ -659,10 +661,12 @@ class Portfolio extends Component {
       //this logic should be under componentDidMount
       //you get a createdAt param that you can use in the logic
       //the time creation is in UTC so 4hr
+      //logged in but haven't connected
       else if (urlParams.get('code') == null) {
           getDatabaseDocs.get()
           .then(doc => {
             console.log("current time stamp is" + currentTimestamp)
+            if(doc.data().tokenExpiryTime){
             if(currentTimestamp > doc.data().tokenExpiryTime){
               console.log("the expired time is" + doc.data().tokenExpiryTime)
               //get new Access & refresh token
@@ -700,6 +704,7 @@ class Portfolio extends Component {
                           }
                         })
             }
+          }
               const userToken = doc.data().accessToken          
               axios.get('https://api.coinbase.com/v2/user', { headers: { Authorization: 'Bearer '+(userToken) } })
               .then(response => {
@@ -778,6 +783,8 @@ class Portfolio extends Component {
                 </ButtonGroup>
                 <div className="text-value">$5,000</div>
                 <div> Your Binance Account</div>
+
+                <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&account=all&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
               </CardBody>
               <div className="chart-wrapper mx-3" style={{ height: '70px' }}>
                 <Line data={cardChartData2} options={cardChartOpts2} height={70} />
@@ -924,7 +931,6 @@ class Portfolio extends Component {
 						<p>Coinbase:</p>
 						<span id="balance"></span>
 					</div>
-        <button className="Portfolio-button btn-primary" onClick={() => window.open('https://www.coinbase.com/oauth/authorize?client_id=28122a9e9d25194c30e60a55c80d83553873ee308f47e8755f749d0c91782440&account=all&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fportfolio&response_type=code&scope=wallet%3Auser%3Aread,wallet:accounts:read')}>Connect Account</button>
                     </div>
 					</div>  
           </CardBody>
